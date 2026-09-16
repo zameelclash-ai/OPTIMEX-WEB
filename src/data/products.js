@@ -226,7 +226,7 @@ export const STORE_LOCATIONS = [
     ],
     mapQuery: "Optimex optical Vadakkencherry Kerala",
     mapUrl: "https://www.google.com/maps/search/?api=1&query=Optimex+optical+Vadakkencherry+Kerala",
-    image: "https://images.unsplash.com/photo-1555421689-491a97ff2040?auto=format&fit=crop&w=900&q=80"
+    image: "/images/optimex-shop-front.webp"
   },
   {
     id: "alathur",
@@ -250,7 +250,7 @@ export const STORE_LOCATIONS = [
     ],
     mapQuery: "Optimex optical Alathur Kerala",
     mapUrl: "https://www.google.com/maps/search/?api=1&query=Optimex+optical+Alathur+Kerala",
-    image: "https://images.unsplash.com/photo-1519643381401-22c77e60520e?auto=format&fit=crop&w=900&q=80"
+    image: "/images/optimex-shop-front.webp"
   }
 ];
 
@@ -302,7 +302,6 @@ export const GOOGLE_REVIEWS = [
   }
 ];
 
-// Simple, clear optical lens comparisons (No confusing tech jargon)
 export const LENS_COMPARISONS = [
   {
     id: "anti-glare",
