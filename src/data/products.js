@@ -90,8 +90,8 @@ export const PRODUCTS = [
     isBestseller: false,
     rating: 4.8,
     images: [
-      "https://images.unsplash.com/photo-1509695503492-413833d296ae?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1577803645773-f96470509666?auto=format&fit=crop&w=800&q=80"
+      "https://images.unsplash.com/photo-1516726817505-f5ed825624d8?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1546180245-c59500ad14d0?auto=format&fit=crop&w=800&q=80"
     ],
     colors: [
       { name: "Rose Quartz", hex: "#FBCFE8" },
@@ -142,7 +142,7 @@ export const PRODUCTS = [
     rating: 4.9,
     images: [
       "https://images.unsplash.com/photo-1591076482161-42ce6da69f67?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1582142839970-2b93cbacbe6b?auto=format&fit=crop&w=800&q=80"
+      "https://images.unsplash.com/photo-1526045612212-70caf35c14df?auto=format&fit=crop&w=800&q=80"
     ],
     colors: [
       { name: "Midnight Black", hex: "#09090B" },
@@ -192,7 +192,7 @@ export const PRODUCTS = [
     isBestseller: true,
     rating: 4.8,
     images: [
-      "https://images.unsplash.com/photo-1582142839970-2b93cbacbe6b?auto=format&fit=crop&w=800&q=80"
+      "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?auto=format&fit=crop&w=800&q=80"
     ],
     colors: [
       { name: "Clear with Handling Tint", hex: "#93C5FD" }
@@ -307,40 +307,44 @@ export const LENS_COMPARISONS = [
     id: "anti-glare",
     title: "Anti-Glare Coating",
     subtitle: "Eliminates Blinding Reflections",
-    tagline: "Essential for Night Driving & Clean Clear Eyes",
-    withFeature: "Crystal clear vision without ghost headlights, reflections, or glare on glass lenses.",
-    withoutFeature: "Blinding light halos from oncoming traffic, reflected glare on laptop screens.",
-    imageWith: "https://images.unsplash.com/photo-1509695503492-413833d296ae?auto=format&fit=crop&w=700&q=80",
-    imageWithout: "https://images.unsplash.com/photo-1591076482161-42ce6da69f67?auto=format&fit=crop&w=700&q=80"
+    tagline: "Essential for Night Driving on NH544 & Clean Clear Vision",
+    withFeature: "Crystal-clear optics with green AR reflection that eliminates oncoming headlight starbursts and double reflections.",
+    withoutFeature: "Blinding halos from oncoming traffic, reflected glare on laptop screens, and dirty ghost light artifacts.",
+    idealFor: "Night drivers, car & motorcycle commuters, evening office workers",
+    imageWith: "https://images.unsplash.com/photo-1588850561407-ed78c282e89b?auto=format&fit=crop&w=800&q=80",
+    imageWithout: "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?auto=format&fit=crop&w=800&q=80"
   },
   {
     id: "blue-cut",
     title: "Blue-Cut Screen Filter",
-    subtitle: "Protects Against Screen Fatigue",
+    subtitle: "Protects Against Digital Eye Strain",
     tagline: "Blocks Harsh High-Frequency Mobile & Monitor Light",
-    withFeature: "Filters out 450nm blue light spectrum, relieving headaches, dry eyes, and evening fatigue.",
-    withoutFeature: "Direct screen glare causing eye strain, dryness, and sleeplessness.",
-    imageWith: "https://images.unsplash.com/photo-1582142839970-2b93cbacbe6b?auto=format&fit=crop&w=700&q=80",
-    imageWithout: "https://images.unsplash.com/photo-1574258495973-f010dfbb5371?auto=format&fit=crop&w=700&q=80"
+    withFeature: "Filters out the 450nm harmful blue light spectrum, preventing eye strain, dryness, and late-night insomnia.",
+    withoutFeature: "Direct screen glare causing throbbing headaches, dry gritty eyes, and disrupted melatonin sleep cycles.",
+    idealFor: "Software professionals, students studying online, smartphone power users",
+    imageWith: "https://images.unsplash.com/photo-1526045612212-70caf35c14df?auto=format&fit=crop&w=800&q=80",
+    imageWithout: "https://images.unsplash.com/photo-1574258495973-f010dfbb5371?auto=format&fit=crop&w=800&q=80"
   },
   {
     id: "uv-protection",
     title: "100% UV400 Sun Protection",
     subtitle: "Blocks Harsh Ultraviolet Rays",
     tagline: "Shields Cornea & Retina from Tropical Sunlight",
-    withFeature: "Blocks 100% UVA & UVB rays, preventing long-term cataract and retinal damage in sunny Kerala.",
-    withoutFeature: "Dangerous UV rays penetrate unprotected eyes causing squinting and damage.",
-    imageWith: "https://images.unsplash.com/photo-1511499767150-a48a237f0083?auto=format&fit=crop&w=700&q=80",
-    imageWithout: "https://images.unsplash.com/photo-1508296695146-257a814070b4?auto=format&fit=crop&w=700&q=80"
+    withFeature: "Blocks 100% UVA & UVB rays with polarized contrast tuning to prevent long-term cataract and pterygium in sunny Kerala.",
+    withoutFeature: "Dangerous UV rays penetrate unprotected dilated pupils causing squinting, cataracts, and premature retina aging.",
+    idealFor: "Two-wheeler riders, outdoor workers, beach & vacation wear",
+    imageWith: "https://images.unsplash.com/photo-1511499767150-a48a237f0083?auto=format&fit=crop&w=800&q=80",
+    imageWithout: "https://images.unsplash.com/photo-1473496169904-658ba7c44d8a?auto=format&fit=crop&w=800&q=80"
   },
   {
     id: "photogray",
     title: "Photogray Auto-Transitions",
     subtitle: "Clear Indoors, Dark Sunglasses Outdoors",
-    tagline: "2-in-1 Convenience Under Kerala Sun",
-    withFeature: "Instantly darkens within seconds outdoors under sunlight, switches back to crystal clear indoors.",
-    withoutFeature: "Need to constantly carry separate sunglasses and reading glasses.",
-    imageWith: "https://images.unsplash.com/photo-1572635196237-14b3f281503f?auto=format&fit=crop&w=700&q=80",
-    imageWithout: "https://images.unsplash.com/photo-1574258495973-f010dfbb5371?auto=format&fit=crop&w=700&q=80"
+    tagline: "2-in-1 Convenience Under the Kerala Sun",
+    withFeature: "Instantly darkens to cool sunglasses within 15 seconds under UV sunlight, seamlessly returning to crystal clear indoors.",
+    withoutFeature: "Need to constantly juggle and carry separate sunglasses and reading spectacles everywhere you go.",
+    idealFor: "All-day spectacle wearers who frequently move between indoors and outdoors",
+    imageWith: "https://images.unsplash.com/photo-1572635196237-14b3f281503f?auto=format&fit=crop&w=800&q=80",
+    imageWithout: "https://images.unsplash.com/photo-1591076482161-42ce6da69f67?auto=format&fit=crop&w=800&q=80"
   }
 ];

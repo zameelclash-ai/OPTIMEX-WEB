@@ -45,6 +45,9 @@ export const ProductCard = ({ product }) => {
           alt={product.name}
           className="w-full h-full object-contain object-center transform transition-transform duration-500 group-hover:scale-105"
           loading="lazy"
+          onError={(e) => {
+            e.target.src = "https://images.unsplash.com/photo-1591076482161-42ce6da69f67?auto=format&fit=crop&w=800&q=80";
+          }}
         />
 
         {/* Hover View Trigger */}

@@ -40,7 +40,7 @@ export const BentoShowcase = () => {
       profile: "https://images.unsplash.com/photo-1574258495973-f010dfbb5371?auto=format&fit=crop&w=800&q=80",
     },
     silver: {
-      front: "https://images.unsplash.com/photo-1582142839970-2b93cbacbe6b?auto=format&fit=crop&w=800&q=80",
+      front: "https://images.unsplash.com/photo-1526045612212-70caf35c14df?auto=format&fit=crop&w=800&q=80",
       angle: "https://images.unsplash.com/photo-1574258495973-f010dfbb5371?auto=format&fit=crop&w=800&q=80",
       profile: "https://images.unsplash.com/photo-1511499767150-a48a237f0083?auto=format&fit=crop&w=800&q=80",
     }
@@ -134,7 +134,7 @@ export const BentoShowcase = () => {
               <div className="relative aspect-[16/9] rounded-2xl overflow-hidden border border-white/10 bg-slate-950 flex items-center justify-center">
                 {/* Background screen scene */}
                 <img
-                  src="https://images.unsplash.com/photo-1509695503492-413833d296ae?auto=format&fit=crop&w=1200&q=80"
+                  src="https://images.unsplash.com/photo-1516726817505-f5ed825624d8?auto=format&fit=crop&w=1200&q=80"
                   alt="Optical Scene"
                   className={`w-full h-full object-cover transition-all duration-700 ${
                     lensMode === 'clear' ? 'brightness-100 contrast-100' :

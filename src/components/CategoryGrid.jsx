@@ -19,7 +19,7 @@ export const CategoryGrid = ({ onSelectCategory }) => {
       id: "contact-lenses",
       title: "Contact Lenses",
       subtitle: "Daily & Monthly Moisture",
-      image: "https://images.unsplash.com/photo-1582142839970-2b93cbacbe6b?auto=format&fit=crop&w=700&q=80"
+      image: "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?auto=format&fit=crop&w=700&q=80"
     },
     {
       id: "all",
@@ -37,7 +37,7 @@ export const CategoryGrid = ({ onSelectCategory }) => {
       id: "eyeglasses",
       title: "Women's Glasses",
       subtitle: "Cat-Eye & Elegant Curves",
-      image: "https://images.unsplash.com/photo-1509695503492-413833d296ae?auto=format&fit=crop&w=700&q=80"
+      image: "https://images.unsplash.com/photo-1516726817505-f5ed825624d8?auto=format&fit=crop&w=700&q=80"
     },
     {
       id: "eyeglasses",

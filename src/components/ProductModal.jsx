@@ -43,6 +43,9 @@ export const ProductModal = () => {
               src={product.images[activeImage] || product.images[0]}
               alt={product.name}
               className="w-full h-full object-contain"
+              onError={(e) => {
+                e.target.src = "https://images.unsplash.com/photo-1591076482161-42ce6da69f67?auto=format&fit=crop&w=800&q=80";
+              }}
             />
           </div>
 
@@ -57,7 +60,14 @@ export const ProductModal = () => {
                     activeImage === i ? 'border-optimex-blue shadow-glow-blue' : 'border-white/10 opacity-50 hover:opacity-100'
                   }`}
                 >
-                  <img src={img} alt="Angle view" className="w-full h-full object-contain p-1" />
+                  <img 
+                    src={img} 
+                    alt="Angle view" 
+                    className="w-full h-full object-contain p-1"
+                    onError={(e) => {
+                      e.target.src = "https://images.unsplash.com/photo-1591076482161-42ce6da69f67?auto=format&fit=crop&w=800&q=80";
+                    }}
+                  />
                 </button>
               ))}
             </div>

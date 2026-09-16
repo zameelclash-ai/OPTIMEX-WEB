@@ -60,7 +60,7 @@ export const AboutExpertise = () => {
             <div className="space-y-3 transform translate-y-4">
               <div className="rounded-2xl overflow-hidden aspect-[9/16] bg-black border border-white/10 shadow-lg">
                 <img
-                  src="https://images.unsplash.com/photo-1509695503492-413833d296ae?auto=format&fit=crop&w=600&q=80"
+                  src="https://images.unsplash.com/photo-1516726817505-f5ed825624d8?auto=format&fit=crop&w=600&q=80"
                   alt="Designer Cat-Eye"
                   className="w-full h-full object-cover object-center"
                 />
