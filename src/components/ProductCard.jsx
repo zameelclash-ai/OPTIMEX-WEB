@@ -1,65 +1,32 @@
 import React, { useState } from 'react';
-import { Heart, Eye, ShoppingBag } from 'lucide-react';
-import { useCart } from '../context/CartContext';
+import { Eye, MessageCircle, MapPin } from 'lucide-react';
+import { useStore } from '../context/CartContext';
 
 export const ProductCard = ({ product }) => {
-  const { 
-    formatPrice, 
-    toggleWishlist, 
-    isWishlisted, 
-    setQuickViewProduct, 
-    setLensCustomizerProduct,
-    addToCart 
-  } = useCart();
-
-  const [selectedColor, setSelectedColor] = useState(product.colors[0]?.name || '');
+  const { setQuickViewProduct, openWhatsAppForBranch } = useStore();
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
-  const isFavorited = isWishlisted(product.id);
-
-  const handleQuickAdd = (e) => {
+  const handleWhatsAppInquire = (e) => {
     e.stopPropagation();
-    if (product.category === 'contact-lenses') {
-      addToCart(product, { color: selectedColor, quantity: 1 });
-    } else {
-      setLensCustomizerProduct(product);
-    }
+    const msg = `Hello Optimex Optical, I saw the ${product.brand} - ${product.name} on your website. Is this model available in your Vadakkencherry or Alathur showroom?`;
+    window.open(`https://wa.me/919447012345?text=${encodeURIComponent(msg)}`, '_blank');
   };
 
   return (
     <div 
       className="group relative bg-optimex-surface rounded-2xl border border-white/10 hover:border-optimex-blue/50 hover:shadow-liquid transition-all duration-300 flex flex-col overflow-hidden"
     >
-      {/* Top Badges & Wishlist */}
+      {/* Brand & Stock Badges */}
       <div className="absolute top-3 left-3 right-3 z-10 flex items-center justify-between pointer-events-none">
-        <div className="flex flex-col gap-1 items-start">
-          {product.isBestseller && (
-            <span className="px-2.5 py-0.5 rounded-full text-[10px] font-extrabold uppercase tracking-wider bg-optimex-red text-white shadow-sm">
-              Popular in Kerala
-            </span>
-          )}
-          {product.isNew && (
-            <span className="px-2.5 py-0.5 rounded-full text-[10px] font-extrabold uppercase tracking-wider bg-optimex-blue text-white shadow-sm">
-              New In
-            </span>
-          )}
-        </div>
+        <span className="px-2.5 py-0.5 rounded-full text-[10px] font-extrabold uppercase tracking-wider bg-white/10 text-white backdrop-blur-md border border-white/10">
+          {product.brand}
+        </span>
 
-        <button
-          type="button"
-          onClick={(e) => {
-            e.stopPropagation();
-            toggleWishlist(product);
-          }}
-          className={`p-2 rounded-full pointer-events-auto transition-all ${
-            isFavorited 
-              ? 'bg-rose-500/20 text-rose-500 border border-rose-500/40' 
-              : 'bg-black/60 text-slate-400 hover:text-rose-400 hover:bg-black/80 border border-white/10'
-          }`}
-          aria-label="Wishlist"
-        >
-          <Heart className={`w-3.5 h-3.5 ${isFavorited ? 'fill-rose-500' : ''}`} />
-        </button>
+        {product.isBestseller && (
+          <span className="px-2 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider bg-optimex-red text-white">
+            Popular in Kerala
+          </span>
+        )}
       </div>
 
       {/* Product Image Area */}
@@ -80,8 +47,8 @@ export const ProductCard = ({ product }) => {
           loading="lazy"
         />
 
-        {/* Hover Quick View Trigger */}
-        <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+        {/* Hover View Trigger */}
+        <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
           <button
             type="button"
             onClick={(e) => {
@@ -91,7 +58,7 @@ export const ProductCard = ({ product }) => {
             className="px-4 py-2 rounded-full bg-white text-slate-950 text-xs font-bold tracking-wide shadow-lg hover:bg-slate-200 flex items-center gap-1.5 transition-transform transform translate-y-2 group-hover:translate-y-0"
           >
             <Eye className="w-3.5 h-3.5 text-optimex-blue" />
-            <span>Specifications</span>
+            <span>View Specifications</span>
           </button>
         </div>
       </div>
@@ -99,13 +66,11 @@ export const ProductCard = ({ product }) => {
       {/* Product Information */}
       <div className="p-5 flex flex-col flex-grow justify-between space-y-4">
         <div>
-          {/* Brand & Shape */}
           <div className="flex items-center justify-between text-[11px] text-slate-400 font-semibold uppercase tracking-wider mb-1">
-            <span className="text-optimex-blue font-bold">{product.brand}</span>
+            <span className="text-optimex-blue font-bold">{product.category.replace('-', ' ')}</span>
             <span className="capitalize">{product.shape} • {product.material}</span>
           </div>
 
-          {/* Product Name */}
           <h3 
             className="font-sans text-base font-bold text-white group-hover:text-optimex-red transition-colors line-clamp-1 cursor-pointer"
             onClick={() => setQuickViewProduct(product)}
@@ -117,53 +82,27 @@ export const ProductCard = ({ product }) => {
             {product.tagline}
           </p>
 
-          {/* Color Swatches */}
-          {product.colors && product.colors.length > 0 && (
-            <div className="flex items-center gap-1.5 mt-3">
-              {product.colors.map((c, i) => (
-                <button
-                  key={i}
-                  type="button"
-                  onClick={() => setSelectedColor(c.name)}
-                  title={c.name}
-                  className={`w-3.5 h-3.5 rounded-full border transition-all ${
-                    selectedColor === c.name 
-                      ? 'ring-2 ring-optimex-blue scale-110 border-white' 
-                      : 'border-white/20 hover:scale-105 opacity-80'
-                  }`}
-                  style={{ backgroundColor: c.hex }}
-                />
-              ))}
-              <span className="text-[10px] text-slate-400 ml-1.5">{selectedColor}</span>
-            </div>
-          )}
+          <div className="mt-3 flex items-center gap-1.5 text-[11px] text-emerald-400 font-medium">
+            <MapPin className="w-3 h-3 shrink-0" />
+            <span>Available at Alathur & Vadakkencherry</span>
+          </div>
         </div>
 
-        {/* Pricing & Action */}
+        {/* Price & Showroom Actions */}
         <div className="pt-3 border-t border-white/5 flex items-center justify-between">
           <div>
-            <div className="flex items-baseline gap-1.5 font-mono">
-              <span className="font-bold text-base text-white">
-                {formatPrice(product.price)}
-              </span>
-              {product.originalPrice && (
-                <span className="text-xs text-slate-500 line-through">
-                  {formatPrice(product.originalPrice)}
-                </span>
-              )}
-            </div>
-            <div className="text-[10px] text-emerald-400 font-medium">
-              Free Lenses Included
-            </div>
+            <span className="text-xs text-slate-400 block font-light">Starting from</span>
+            <span className="font-bold text-sm text-white font-mono">{product.priceText}</span>
           </div>
 
           <button
             type="button"
-            onClick={handleQuickAdd}
-            className="px-3.5 py-2 rounded-xl bg-white/10 hover:bg-optimex-red text-white text-xs font-bold transition-all flex items-center gap-1.5"
+            onClick={handleWhatsAppInquire}
+            className="px-3.5 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold transition-all flex items-center gap-1.5 shadow-sm"
+            title="Ask availability on WhatsApp"
           >
-            <ShoppingBag className="w-3.5 h-3.5" />
-            <span>{product.category === 'contact-lenses' ? 'Add' : 'Lenses'}</span>
+            <MessageCircle className="w-3.5 h-3.5" />
+            <span>WhatsApp</span>
           </button>
         </div>
       </div>

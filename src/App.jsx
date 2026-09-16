@@ -1,26 +1,22 @@
 import React, { useState } from 'react';
-import { CartProvider, useCart } from './context/CartContext';
+import { StoreProvider, useStore } from './context/CartContext';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
-import { BentoShowcase } from './components/BentoShowcase';
-import { FeatureStrip } from './components/FeatureStrip';
+import { LensVisualGuide } from './components/LensVisualGuide';
 import { ProductCatalog } from './components/ProductCatalog';
-import { CareGuide } from './components/CareGuide';
-import { ReviewsSection } from './components/ReviewsSection';
 import { StoreLocator } from './components/StoreLocator';
+import { ReviewsSection } from './components/ReviewsSection';
+import { CareGuide } from './components/CareGuide';
 import { Footer } from './components/Footer';
 
 // Modals
 import { ProductModal } from './components/ProductModal';
-import { LensCustomizerModal } from './components/LensCustomizerModal';
 import { BookExamModal } from './components/BookExamModal';
-import { StyleFinder } from './components/StyleFinder';
-import { CartDrawer } from './components/CartDrawer';
-import { CheckoutModal } from './components/CheckoutModal';
+import { MapChooserModal } from './components/MapChooserModal';
 import { Check } from 'lucide-react';
 
 const ToastNotification = () => {
-  const { toastMessage } = useCart();
+  const { toastMessage } = useStore();
   if (!toastMessage) return null;
 
   return (
@@ -35,26 +31,22 @@ const ToastNotification = () => {
 
 const MainContent = () => {
   const [activeCategory, setActiveCategory] = useState('all');
-  const [searchQuery, setSearchQuery] = useState('');
 
   return (
     <div className="min-h-screen flex flex-col bg-optimex-dark text-slate-100 selection:bg-optimex-red/20 selection:text-white">
       {/* Navigation */}
       <Navbar 
         activeCategory={activeCategory} 
-        setActiveCategory={setActiveCategory}
-        searchQuery={searchQuery}
-        setSearchQuery={setSearchQuery}
+        setActiveCategory={setActiveCategory} 
       />
 
       {/* Main Sections */}
       <main className="flex-1">
         <Hero />
-        <BentoShowcase />
+        <LensVisualGuide />
         <ProductCatalog 
           activeCategory={activeCategory} 
-          setActiveCategory={setActiveCategory}
-          searchQuery={searchQuery}
+          setActiveCategory={setActiveCategory} 
         />
         <StoreLocator />
         <ReviewsSection />
@@ -64,13 +56,10 @@ const MainContent = () => {
       {/* Footer */}
       <Footer setActiveCategory={setActiveCategory} />
 
-      {/* Interactive Overlays & Modals */}
+      {/* Modals */}
       <ProductModal />
-      <LensCustomizerModal />
       <BookExamModal />
-      <StyleFinder onSelectCategory={setActiveCategory} />
-      <CartDrawer />
-      <CheckoutModal />
+      <MapChooserModal />
       <ToastNotification />
     </div>
   );
@@ -78,8 +67,8 @@ const MainContent = () => {
 
 export default function App() {
   return (
-    <CartProvider>
+    <StoreProvider>
       <MainContent />
-    </CartProvider>
+    </StoreProvider>
   );
 }

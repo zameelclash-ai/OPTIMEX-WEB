@@ -1,71 +1,51 @@
 import React, { useState } from 'react';
-import { X, Calendar, Clock, MapPin, CheckCircle2, Stethoscope, MessageCircle } from 'lucide-react';
-import { useCart } from '../context/CartContext';
-import { STORE_LOCATIONS, EXAM_SERVICES } from '../data/products';
-import confetti from 'canvas-confetti';
+import { X, Calendar, Clock, MapPin, MessageCircle, Phone, Stethoscope } from 'lucide-react';
+import { useStore } from '../context/CartContext';
+import { STORE_LOCATIONS } from '../data/products';
 
 export const BookExamModal = () => {
   const { 
     isExamModalOpen, 
     setIsExamModalOpen, 
     selectedBranchForExam, 
-    setSelectedBranchForExam, 
+    setSelectedBranchForExam,
     showToast 
-  } = useCart();
+  } = useStore();
 
-  const [selectedClinic, setSelectedClinic] = useState(selectedBranchForExam || STORE_LOCATIONS[0].id);
-  const [selectedService, setSelectedService] = useState(EXAM_SERVICES[0].id);
-  const [selectedDate, setSelectedDate] = useState('2026-09-20');
-  const [selectedTime, setSelectedTime] = useState('11:00 AM');
+  const [selectedBranch, setSelectedBranch] = useState(selectedBranchForExam || 'vadakkencherry');
   const [patientName, setPatientName] = useState('');
-  const [patientEmail, setPatientEmail] = useState('');
   const [patientPhone, setPatientPhone] = useState('');
-  const [isSuccess, setIsSuccess] = useState(false);
-  const [bookingRef, setBookingRef] = useState('');
+  const [preferredDate, setPreferredDate] = useState('2026-09-20');
+  const [preferredTime, setPreferredTime] = useState('11:00 AM');
 
   if (!isExamModalOpen) return null;
 
-  const timeSlots = [
-    '09:30 AM', '10:30 AM', '11:30 AM', '02:00 PM', '03:30 PM', '05:00 PM', '06:30 PM'
-  ];
+  const currentStore = STORE_LOCATIONS.find(s => s.id === selectedBranch) || STORE_LOCATIONS[0];
 
-  const handleSubmitBooking = (e) => {
+  const handleWhatsAppBooking = (e) => {
     e.preventDefault();
-    if (!patientName || !patientPhone) {
-      showToast('Please enter patient name and mobile number');
+    if (!patientName.trim() || !patientPhone.trim()) {
+      showToast('Please enter your name and phone number');
       return;
     }
 
-    const ref = `OPT-KL-${Math.floor(100000 + Math.random() * 900000)}`;
-    setBookingRef(ref);
-    setIsSuccess(true);
-    
-    try {
-      confetti({
-        particleCount: 75,
-        spread: 70,
-        origin: { y: 0.6 }
-      });
-    } catch (err) {
-      console.error(err);
-    }
-  };
+    const branchName = currentStore.town;
+    const phone = currentStore.whatsappNumber;
 
-  const handleReset = () => {
-    setIsSuccess(false);
+    const message = `Hello Optimex Optical ${branchName},\n\nI would like to book a computerized eye checkup appointment:\n- Patient Name: ${patientName}\n- Contact Number: ${patientPhone}\n- Preferred Date: ${preferredDate}\n- Preferred Time: ${preferredTime}\n\nPlease confirm my slot. Thank you!`;
+
+    window.open(`https://wa.me/${phone}?text=${encodeURIComponent(message)}`, '_blank');
     setIsExamModalOpen(false);
-    setPatientName('');
-    setPatientPhone('');
-    setPatientEmail('');
   };
 
-  const currentClinicObj = STORE_LOCATIONS.find(l => l.id === selectedClinic) || STORE_LOCATIONS[0];
-  const currentServiceObj = EXAM_SERVICES.find(s => s.id === selectedService) || EXAM_SERVICES[0];
+  const handleDirectCall = () => {
+    window.location.href = `tel:${currentStore.phone}`;
+  };
 
   return (
-    <div className="fixed inset-0 z-50 overflow-y-auto bg-black/80 backdrop-blur-md flex items-center justify-center p-4 sm:p-6 animate-in fade-in duration-200">
+    <div className="fixed inset-0 z-50 overflow-y-auto bg-black/85 backdrop-blur-md flex items-center justify-center p-4 sm:p-6 animate-in fade-in duration-200">
       <div 
-        className="relative bg-optimex-surface rounded-3xl max-w-2xl w-full shadow-2xl overflow-hidden border border-white/10"
+        className="relative bg-optimex-surface text-white rounded-3xl max-w-xl w-full shadow-2xl overflow-hidden border border-white/10"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header */}
@@ -76,201 +56,133 @@ export const BookExamModal = () => {
             </div>
             <div>
               <span className="text-[10px] font-extrabold uppercase tracking-widest text-optimex-red">
-                Optimex Clinical Eyecare • Kerala
+                COMPUTERIZED REFRACTION CLINIC
               </span>
               <h2 className="text-xl font-bold text-white">
-                Schedule Computerized Eye Exam
+                Book Eye Exam via WhatsApp / Call
               </h2>
             </div>
           </div>
           <button
-            onClick={handleReset}
+            onClick={() => setIsExamModalOpen(false)}
             className="p-2 rounded-full hover:bg-white/10 text-slate-400 hover:text-white transition-colors"
           >
             <X className="w-5 h-5" />
           </button>
         </div>
 
-        {isSuccess ? (
-          <div className="p-8 text-center space-y-6">
-            <div className="w-16 h-16 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center mx-auto border border-emerald-500/30">
-              <CheckCircle2 className="w-10 h-10" />
-            </div>
-
-            <div>
-              <h3 className="text-2xl font-bold text-white">
-                Appointment Reserved!
-              </h3>
-              <p className="text-xs text-slate-400 mt-1">
-                Your slot at <span className="font-semibold text-white">{currentClinicObj.name}</span> is confirmed for <span className="text-white font-bold">{selectedDate} at {selectedTime}</span>.
-              </p>
-            </div>
-
-            <div className="bg-black/40 rounded-2xl p-5 border border-white/10 text-left space-y-2.5 text-xs">
-              <div className="flex justify-between pb-2 border-b border-white/5">
-                <span className="text-slate-400">Reference Number</span>
-                <span className="font-mono font-bold text-optimex-red">{bookingRef}</span>
-              </div>
-              <div className="flex justify-between pb-2 border-b border-white/5">
-                <span className="text-slate-400">Patient</span>
-                <span className="font-bold text-white">{patientName}</span>
-              </div>
-              <div className="flex justify-between pb-2 border-b border-white/5">
-                <span className="text-slate-400">Store</span>
-                <span className="font-bold text-white">{currentClinicObj.name}</span>
-              </div>
-              <div className="flex justify-between">
-                <span className="text-slate-400">Optometrist</span>
-                <span className="font-bold text-slate-300">{currentClinicObj.optometrist}</span>
-              </div>
-            </div>
-
-            <div className="flex gap-3">
-              <a
-                href={`https://wa.me/${currentClinicObj.whatsapp.replace(/[^0-9]/g, '')}?text=Hi%2C%20I%20have%20booked%20an%20eye%20exam%20ref%20${bookingRef}%20for%20${encodeURIComponent(patientName)}%20on%20${selectedDate}`}
-                target="_blank"
-                rel="noreferrer"
-                className="flex-1 py-3.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs flex items-center justify-center gap-2 transition-colors"
-              >
-                <MessageCircle className="w-4 h-4" />
-                <span>Confirm on WhatsApp</span>
-              </a>
-              <button
-                onClick={handleReset}
-                className="flex-1 py-3.5 rounded-xl bg-white/10 hover:bg-white/15 text-white font-bold text-xs transition-colors"
-              >
-                Close
-              </button>
+        {/* Form Body */}
+        <form onSubmit={handleWhatsAppBooking} className="p-6 sm:p-8 space-y-5">
+          {/* 1. Branch Selector */}
+          <div>
+            <label className="block text-xs font-bold uppercase tracking-wider text-slate-400 mb-2">
+              Select Showroom Clinic
+            </label>
+            <div className="grid grid-cols-2 gap-3">
+              {STORE_LOCATIONS.map((store) => (
+                <div
+                  key={store.id}
+                  onClick={() => setSelectedBranch(store.id)}
+                  className={`p-3.5 rounded-2xl border cursor-pointer transition-all ${
+                    selectedBranch === store.id 
+                      ? 'border-optimex-blue bg-optimex-blue/20 text-white shadow-glow-blue' 
+                      : 'border-white/10 bg-black/40 text-slate-400 hover:border-white/20'
+                  }`}
+                >
+                  <div className="flex items-center gap-1.5 text-xs font-bold text-white mb-0.5">
+                    <MapPin className="w-3.5 h-3.5 text-optimex-red" />
+                    <span>{store.town}</span>
+                  </div>
+                  <p className="text-[11px] text-slate-400">{store.statusText}</p>
+                  <p className="text-[10px] text-amber-400 font-bold mt-1">{store.rating} ★ ({store.reviewsCount} reviews)</p>
+                </div>
+              ))}
             </div>
           </div>
-        ) : (
-          <form onSubmit={handleSubmitBooking} className="p-6 sm:p-8 space-y-5 max-h-[75vh] overflow-y-auto">
-            {/* 1. Branch selection */}
+
+          {/* 2. Patient Name & Phone */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             <div>
-              <label className="block text-xs font-bold uppercase tracking-wider text-slate-400 mb-2">
-                1. Select Showroom Location
-              </label>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                {STORE_LOCATIONS.map((loc) => (
-                  <div
-                    key={loc.id}
-                    onClick={() => setSelectedClinic(loc.id)}
-                    className={`p-3.5 rounded-2xl border cursor-pointer transition-all ${
-                      selectedClinic === loc.id 
-                        ? 'border-optimex-blue bg-optimex-blue/15 text-white shadow-glow-blue' 
-                        : 'border-white/10 bg-black/40 text-slate-400 hover:border-white/20'
-                    }`}
-                  >
-                    <div className="flex items-center gap-2 mb-1">
-                      <MapPin className="w-3.5 h-3.5 text-optimex-red" />
-                      <span className="font-bold text-xs text-white">{loc.name}</span>
-                    </div>
-                    <p className="text-[11px] text-slate-400">{loc.statusText}</p>
-                    <span className="text-[10px] text-amber-400 font-bold block mt-1">
-                      {loc.rating} ★ ({loc.reviewsCount} reviews)
-                    </span>
-                  </div>
-                ))}
-              </div>
+              <label className="text-[11px] font-semibold text-slate-300 block mb-1">Patient Name</label>
+              <input
+                type="text"
+                required
+                placeholder="e.g. Ramesh Kumar"
+                value={patientName}
+                onChange={(e) => setPatientName(e.target.value)}
+                className="w-full bg-black/40 border border-white/15 rounded-xl p-2.5 text-xs text-white focus:ring-1 focus:ring-optimex-blue focus:outline-none"
+              />
             </div>
 
-            {/* 2. Service selection */}
             <div>
-              <label className="block text-xs font-bold uppercase tracking-wider text-slate-400 mb-2">
-                2. Vision Examination Type
-              </label>
-              <div className="space-y-2">
-                {EXAM_SERVICES.map((srv) => (
-                  <div
-                    key={srv.id}
-                    onClick={() => setSelectedService(srv.id)}
-                    className={`p-3 rounded-xl border cursor-pointer transition-all flex items-center justify-between ${
-                      selectedService === srv.id 
-                        ? 'border-optimex-red bg-optimex-red/10 text-white' 
-                        : 'border-white/10 bg-black/40 text-slate-400 hover:border-white/20'
-                    }`}
-                  >
-                    <div>
-                      <div className="font-bold text-xs text-white">{srv.title}</div>
-                      <div className="text-[11px] text-slate-400">{srv.description}</div>
-                    </div>
-                    <div className="text-right shrink-0 ml-3">
-                      <div className="font-bold text-xs text-emerald-400">₹{srv.price}</div>
-                      <div className="text-[10px] text-slate-400">{srv.duration}</div>
-                    </div>
-                  </div>
-                ))}
-              </div>
+              <label className="text-[11px] font-semibold text-slate-300 block mb-1">Mobile / WhatsApp Number</label>
+              <input
+                type="tel"
+                required
+                placeholder="+91 98765 43210"
+                value={patientPhone}
+                onChange={(e) => setPatientPhone(e.target.value)}
+                className="w-full bg-black/40 border border-white/15 rounded-xl p-2.5 text-xs text-white focus:ring-1 focus:ring-optimex-blue focus:outline-none"
+              />
+            </div>
+          </div>
+
+          {/* 3. Preferred Date & Time */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <div>
+              <label className="text-[11px] font-semibold text-slate-300 block mb-1">Preferred Date</label>
+              <input
+                type="date"
+                value={preferredDate}
+                min="2026-09-17"
+                max="2026-10-31"
+                onChange={(e) => setPreferredDate(e.target.value)}
+                className="w-full bg-black/40 border border-white/15 rounded-xl p-2.5 text-xs text-white focus:ring-1 focus:ring-optimex-blue focus:outline-none cursor-pointer"
+              />
             </div>
 
-            {/* 3. Date & Time Selection */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <div>
-                <label className="block text-xs font-bold uppercase tracking-wider text-slate-400 mb-1.5">
-                  Date
-                </label>
-                <input
-                  type="date"
-                  value={selectedDate}
-                  min="2026-09-17"
-                  max="2026-10-31"
-                  onChange={(e) => setSelectedDate(e.target.value)}
-                  className="w-full bg-black/40 border border-white/10 rounded-xl p-2.5 text-xs text-white font-medium focus:ring-1 focus:ring-optimex-blue"
-                />
-              </div>
-
-              <div>
-                <label className="block text-xs font-bold uppercase tracking-wider text-slate-400 mb-1.5">
-                  Time Slot
-                </label>
-                <select
-                  value={selectedTime}
-                  onChange={(e) => setSelectedTime(e.target.value)}
-                  className="w-full bg-black/40 border border-white/10 rounded-xl p-2.5 text-xs text-white font-medium focus:ring-1 focus:ring-optimex-blue cursor-pointer"
-                >
-                  {timeSlots.map((time) => (
-                    <option key={time} value={time} className="bg-neutral-900">{time}</option>
-                  ))}
-                </select>
-              </div>
+            <div>
+              <label className="text-[11px] font-semibold text-slate-300 block mb-1">Preferred Time</label>
+              <select
+                value={preferredTime}
+                onChange={(e) => setPreferredTime(e.target.value)}
+                className="w-full bg-black/40 border border-white/15 rounded-xl p-2.5 text-xs text-white focus:ring-1 focus:ring-optimex-blue focus:outline-none cursor-pointer"
+              >
+                <option value="10:00 AM" className="bg-neutral-900">10:00 AM</option>
+                <option value="11:00 AM" className="bg-neutral-900">11:00 AM</option>
+                <option value="12:00 PM" className="bg-neutral-900">12:00 PM</option>
+                <option value="02:30 PM" className="bg-neutral-900">02:30 PM</option>
+                <option value="04:00 PM" className="bg-neutral-900">04:00 PM</option>
+                <option value="05:30 PM" className="bg-neutral-900">05:30 PM</option>
+                <option value="06:30 PM" className="bg-neutral-900">06:30 PM</option>
+              </select>
             </div>
+          </div>
 
-            {/* 4. Patient Info */}
-            <div className="pt-2 border-t border-white/10 space-y-3">
-              <label className="block text-xs font-bold uppercase tracking-wider text-slate-400">
-                Patient Contact Information
-              </label>
-              
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                <input
-                  type="text"
-                  required
-                  placeholder="Patient Full Name"
-                  value={patientName}
-                  onChange={(e) => setPatientName(e.target.value)}
-                  className="w-full bg-black/40 border border-white/10 rounded-xl p-2.5 text-xs text-white focus:ring-1 focus:ring-optimex-blue"
-                />
-                <input
-                  type="tel"
-                  required
-                  placeholder="Mobile / WhatsApp Number"
-                  value={patientPhone}
-                  onChange={(e) => setPatientPhone(e.target.value)}
-                  className="w-full bg-black/40 border border-white/10 rounded-xl p-2.5 text-xs text-white focus:ring-1 focus:ring-optimex-blue"
-                />
-              </div>
-            </div>
+          <div className="p-3 bg-white/5 rounded-xl border border-white/5 text-[11px] text-slate-400">
+            Appointment will be sent directly to <strong className="text-white">{currentStore.name}</strong> on WhatsApp for quick confirmation. No online advance payment required.
+          </div>
 
-            {/* Submit */}
+          {/* Action Buttons: WhatsApp & Phone */}
+          <div className="pt-2 flex flex-col sm:flex-row gap-3">
             <button
               type="submit"
-              className="w-full py-4 rounded-2xl bg-optimex-red hover:bg-optimex-redHover text-white font-bold text-xs uppercase tracking-wider shadow-glow-red transition-all flex items-center justify-center gap-2"
+              className="flex-1 py-3.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs uppercase tracking-wider transition-colors flex items-center justify-center gap-2 shadow-lg"
             >
-              <Calendar className="w-4 h-4" />
-              <span>Confirm Clinic Reservation</span>
+              <MessageCircle className="w-4 h-4" />
+              <span>Confirm on WhatsApp</span>
             </button>
-          </form>
-        )}
+
+            <button
+              type="button"
+              onClick={handleDirectCall}
+              className="py-3.5 px-5 rounded-xl bg-white/10 hover:bg-white/15 text-white font-bold text-xs uppercase tracking-wider transition-colors flex items-center justify-center gap-2"
+            >
+              <Phone className="w-4 h-4" />
+              <span>Call Shop</span>
+            </button>
+          </div>
+        </form>
 
       </div>
     </div>

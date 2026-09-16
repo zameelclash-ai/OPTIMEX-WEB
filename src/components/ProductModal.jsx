@@ -1,34 +1,24 @@
 import React, { useState } from 'react';
-import { X, Check, Heart, Ruler, ArrowRight, ShoppingBag } from 'lucide-react';
-import { useCart } from '../context/CartContext';
+import { X, Check, Ruler, MessageCircle, MapPin, Calendar, ArrowRight } from 'lucide-react';
+import { useStore } from '../context/CartContext';
 
 export const ProductModal = () => {
   const { 
     quickViewProduct, 
     setQuickViewProduct, 
-    setLensCustomizerProduct, 
-    addToCart, 
-    toggleWishlist, 
-    isWishlisted, 
-    formatPrice 
-  } = useCart();
+    setIsMapModalOpen, 
+    setIsExamModalOpen 
+  } = useStore();
 
   if (!quickViewProduct) return null;
 
   const product = quickViewProduct;
-  const [selectedColor, setSelectedColor] = useState(product.colors[0]?.name || '');
+  const [selectedColor, setSelectedColor] = useState(product.colors?.[0]?.name || '');
   const [activeImage, setActiveImage] = useState(0);
 
-  const favorited = isWishlisted(product.id);
-
-  const handleProceedToLenses = () => {
-    setQuickViewProduct(null);
-    setLensCustomizerProduct(product);
-  };
-
-  const handleDirectAdd = () => {
-    addToCart(product, { color: selectedColor, quantity: 1 });
-    setQuickViewProduct(null);
+  const handleWhatsAppInquiry = () => {
+    const msg = `Hello Optimex Optical, I am interested in trying the ${product.brand} - ${product.name} (${selectedColor}) in your showroom. Could you please confirm if this is in stock?`;
+    window.open(`https://wa.me/919447012345?text=${encodeURIComponent(msg)}`, '_blank');
   };
 
   return (
@@ -73,7 +63,7 @@ export const ProductModal = () => {
             </div>
           )}
 
-          {/* Dimensions Breakdown */}
+          {/* Optical Dimensions Breakdown */}
           {product.dimensions && (
             <div className="mt-6 bg-white/5 p-4 rounded-xl border border-white/5">
               <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-slate-400 mb-2">
@@ -98,34 +88,22 @@ export const ProductModal = () => {
           )}
         </div>
 
-        {/* Details Side */}
+        {/* Product Details Side */}
         <div className="md:w-1/2 p-6 sm:p-8 flex flex-col justify-between space-y-6">
           <div className="space-y-4">
             <div>
-              <div className="flex items-center justify-between">
-                <span className="text-xs font-extrabold uppercase tracking-widest text-optimex-red">
-                  {product.brand}
-                </span>
-                <button
-                  onClick={() => toggleWishlist(product)}
-                  className="text-xs flex items-center gap-1 text-slate-400 hover:text-rose-400 font-medium"
-                >
-                  <Heart className={`w-4 h-4 ${favorited ? 'fill-rose-500 text-rose-500' : ''}`} />
-                  <span>{favorited ? 'In Wishlist' : 'Add to Wishlist'}</span>
-                </button>
-              </div>
+              <span className="text-xs font-extrabold uppercase tracking-widest text-optimex-red">
+                {product.brand}
+              </span>
 
               <h2 className="text-2xl font-bold text-white mt-1">
                 {product.name}
               </h2>
 
-              <div className="flex items-baseline gap-2 mt-2 font-mono">
-                <span className="text-2xl font-bold text-white">{formatPrice(product.price)}</span>
-                {product.originalPrice && (
-                  <span className="text-sm text-slate-500 line-through">{formatPrice(product.originalPrice)}</span>
-                )}
-                <span className="text-xs font-semibold text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 px-2 py-0.5 rounded-full ml-1">
-                  Free Anti-Glare Lenses Included
+              <div className="flex items-baseline gap-2 mt-2">
+                <span className="text-lg font-mono font-bold text-white">{product.priceText}</span>
+                <span className="text-xs text-emerald-400 bg-emerald-500/10 px-2.5 py-0.5 rounded-full border border-emerald-500/20 font-medium">
+                  Includes Free Testing & Fitting
                 </span>
               </div>
             </div>
@@ -135,35 +113,37 @@ export const ProductModal = () => {
             </p>
 
             {/* Colors */}
-            <div>
-              <label className="block text-xs font-bold uppercase tracking-wider text-slate-400 mb-2">
-                Color Finish: <span className="text-white">{selectedColor}</span>
-              </label>
-              <div className="flex items-center gap-2 flex-wrap">
-                {product.colors.map((c, i) => (
-                  <button
-                    key={i}
-                    onClick={() => setSelectedColor(c.name)}
-                    className={`flex items-center gap-2 px-3 py-1.5 rounded-xl border text-xs font-medium transition-all ${
-                      selectedColor === c.name 
-                        ? 'border-optimex-blue bg-optimex-blue/20 text-white font-bold' 
-                        : 'border-white/10 text-slate-400 hover:border-white/20'
-                    }`}
-                  >
-                    <span 
-                      className="w-3.5 h-3.5 rounded-full border border-white/20 shrink-0" 
-                      style={{ backgroundColor: c.hex }} 
-                    />
-                    <span>{c.name}</span>
-                  </button>
-                ))}
+            {product.colors && product.colors.length > 0 && (
+              <div>
+                <label className="block text-xs font-bold uppercase tracking-wider text-slate-400 mb-2">
+                  Color Options: <span className="text-white">{selectedColor}</span>
+                </label>
+                <div className="flex items-center gap-2 flex-wrap">
+                  {product.colors.map((c, i) => (
+                    <button
+                      key={i}
+                      onClick={() => setSelectedColor(c.name)}
+                      className={`flex items-center gap-2 px-3 py-1.5 rounded-xl border text-xs font-medium transition-all ${
+                        selectedColor === c.name 
+                          ? 'border-optimex-blue bg-optimex-blue/20 text-white font-bold' 
+                          : 'border-white/10 text-slate-400 hover:border-white/20'
+                      }`}
+                    >
+                      <span 
+                        className="w-3.5 h-3.5 rounded-full border border-white/20 shrink-0" 
+                        style={{ backgroundColor: c.hex }} 
+                      />
+                      <span>{c.name}</span>
+                    </button>
+                  ))}
+                </div>
               </div>
-            </div>
+            )}
 
             {/* Features */}
             <div>
               <div className="text-xs font-bold uppercase tracking-wider text-slate-400 mb-2">
-                Optical Craftsmanship Highlights
+                Showroom Guarantees
               </div>
               <ul className="grid grid-cols-2 gap-2 text-xs text-slate-300">
                 {product.features?.map((feat, i) => (
@@ -176,32 +156,39 @@ export const ProductModal = () => {
             </div>
           </div>
 
-          {/* CTAs */}
+          {/* Showroom Actions */}
           <div className="space-y-3 pt-4 border-t border-white/10">
-            {product.category === 'contact-lenses' ? (
+            <button
+              onClick={handleWhatsAppInquiry}
+              className="w-full py-3.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs uppercase tracking-wider transition-colors flex items-center justify-center gap-2 shadow-lg"
+            >
+              <MessageCircle className="w-4 h-4" />
+              <span>Ask Availability on WhatsApp</span>
+            </button>
+
+            <div className="flex gap-2">
               <button
-                onClick={handleDirectAdd}
-                className="w-full py-3.5 rounded-xl bg-optimex-blue hover:bg-blue-600 text-white font-bold text-xs uppercase tracking-wider shadow-glow-blue transition-all flex items-center justify-center gap-2"
+                onClick={() => {
+                  setQuickViewProduct(null);
+                  setIsMapModalOpen(true);
+                }}
+                className="flex-1 py-2.5 rounded-xl bg-white/10 hover:bg-white/15 text-white text-xs font-bold transition-colors flex items-center justify-center gap-1.5"
               >
-                <span>Add Box to Bag</span>
+                <MapPin className="w-3.5 h-3.5 text-optimex-red" />
+                <span>Visit Showroom</span>
               </button>
-            ) : (
-              <div className="space-y-2">
-                <button
-                  onClick={handleProceedToLenses}
-                  className="w-full py-3.5 rounded-xl bg-optimex-red hover:bg-optimex-redHover text-white font-bold text-xs uppercase tracking-wider shadow-glow-red transition-all flex items-center justify-center gap-2"
-                >
-                  <span>Select Lenses & Prescription</span>
-                  <ArrowRight className="w-4 h-4" />
-                </button>
-                <button
-                  onClick={handleDirectAdd}
-                  className="w-full py-2.5 rounded-xl bg-white/10 hover:bg-white/15 text-white text-xs font-semibold transition-colors"
-                >
-                  Buy Frame Only (With Non-Prescription Demo Lenses)
-                </button>
-              </div>
-            )}
+
+              <button
+                onClick={() => {
+                  setQuickViewProduct(null);
+                  setIsExamModalOpen(true);
+                }}
+                className="flex-1 py-2.5 rounded-xl bg-optimex-red hover:bg-optimex-redHover text-white text-xs font-bold transition-colors flex items-center justify-center gap-1.5 shadow-glow-red"
+              >
+                <Calendar className="w-3.5 h-3.5" />
+                <span>Book Eye Exam</span>
+              </button>
+            </div>
           </div>
         </div>
 

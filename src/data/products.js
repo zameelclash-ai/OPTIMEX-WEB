@@ -1,275 +1,205 @@
 export const PRODUCTS = [
   {
-    id: "opt-01",
-    name: "AeroTitanium Alpha 01",
-    brand: "Optimex Elite",
-    tagline: "Japanese featherweight beta-titanium wireframe with memory flex",
-    price: 3499,
-    originalPrice: 4999,
-    category: "eyeglasses",
+    id: "rb-01",
+    name: "Ray-Ban Classic Wayfarer Noir",
+    brand: "Ray-Ban",
+    tagline: "The timeless cultural icon in gloss black with polarized crystal optics",
+    priceText: "₹4,890 onwards",
+    category: "sunglasses",
     gender: "unisex",
-    shape: "round",
-    material: "titanium",
-    frameType: "full-rim",
-    isNew: true,
-    isBestseller: true,
-    rating: 4.9,
-    reviewsCount: 142,
-    images: [
-      "https://images.unsplash.com/photo-1574258495973-f010dfbb5371?auto=format&fit=crop&w=900&q=80",
-      "https://images.unsplash.com/photo-1511499767150-a48a237f0083?auto=format&fit=crop&w=900&q=80"
-    ],
-    colors: [
-      { name: "Satin Champagne Gold", hex: "#D4AF37", inStock: true },
-      { name: "Matte Gunmetal", hex: "#4A5568", inStock: true },
-      { name: "Obsidian Noir", hex: "#1A202C", inStock: true }
-    ],
-    dimensions: { lensWidth: 49, bridgeWidth: 20, templeLength: 145 },
-    description: "Forged from ultra-pure Japanese Beta-Titanium. Weighing a mere 11 grams, the Alpha 01 delivers tensionless ergonomic comfort, screwless high-tensile barrel hinges, and pure optical balance.",
-    faceShapeFit: ["oval", "square", "heart"],
-    features: ["Featherlight 11g Beta-Titanium", "Integrated Silicone Anti-Slip Pads", "Zero-Screw Hinge Assembly", "CRI 99+ Blue Block Option"]
-  },
-  {
-    id: "opt-02",
-    name: "Malabar Heritage Havana",
-    brand: "Optimex Classics",
-    tagline: "Hand-cured Italian Mazzucchelli bio-acetate in rich tortoise amber",
-    price: 2699,
-    originalPrice: 3899,
-    category: "eyeglasses",
-    gender: "men",
-    shape: "rectangle",
+    shape: "square",
     material: "acetate",
     frameType: "full-rim",
-    isNew: false,
     isBestseller: true,
-    rating: 4.8,
-    reviewsCount: 98,
-    images: [
-      "https://images.unsplash.com/photo-1591076482161-42ce6da69f67?auto=format&fit=crop&w=900&q=80",
-      "https://images.unsplash.com/photo-1508296695146-257a814070b4?auto=format&fit=crop&w=900&q=80"
-    ],
-    colors: [
-      { name: "Amber Tortoise", hex: "#8B4513", inStock: true },
-      { name: "Classic Noir", hex: "#111827", inStock: true },
-      { name: "Champagne Crystal", hex: "#F3E5AB", inStock: true }
-    ],
-    dimensions: { lensWidth: 52, bridgeWidth: 18, templeLength: 142 },
-    description: "Cured over 90 days from bespoke cotton-based bio-acetate. Characterized by warm amber tortoise striations, 5-barrel German rivet hinges, and hand-beveled temple tips.",
-    faceShapeFit: ["round", "oval"],
-    features: ["Custom Core Wire detailing", "Mazzucchelli 1849 Bio-Acetate", "Triple-Buffed Luster", "Progressive Lens Optimized"]
-  },
-  {
-    id: "opt-03",
-    name: "Lumina Sculpt Cat-Eye",
-    brand: "Optimex Atelier",
-    tagline: "High-fashion architectural browline with rose gold accents",
-    price: 2999,
-    originalPrice: 4299,
-    category: "eyeglasses",
-    gender: "women",
-    shape: "cat-eye",
-    material: "acetate",
-    frameType: "full-rim",
-    isNew: true,
-    isBestseller: false,
     rating: 4.9,
-    reviewsCount: 64,
     images: [
-      "https://images.unsplash.com/photo-1509695503492-413833d296ae?auto=format&fit=crop&w=900&q=80",
-      "https://images.unsplash.com/photo-1577803645773-f96470509666?auto=format&fit=crop&w=900&q=80"
+      "https://images.unsplash.com/photo-1511499767150-a48a237f0083?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1572635196237-14b3f281503f?auto=format&fit=crop&w=800&q=80"
     ],
     colors: [
-      { name: "Translucent Blush", hex: "#F7CAC9", inStock: true },
-      { name: "Gloss Jet Noir", hex: "#0F172A", inStock: true },
-      { name: "Honey Demi", hex: "#A07855", inStock: true }
+      { name: "Gloss Jet Black", hex: "#111827" },
+      { name: "Havana Tortoise", hex: "#78350F" }
     ],
-    dimensions: { lensWidth: 51, bridgeWidth: 17, templeLength: 140 },
-    description: "Designed to sculpt the cheekbones and provide an instant visual lift. The Lumina combines lightweight acetate fronts with flexible stainless steel temples.",
-    faceShapeFit: ["square", "round", "oval"],
-    features: ["Sculpted Browline Contour", "Zero-Pinch Bridge Geometry", "Anti-Reflective Coating Ready", "Ultra-Smooth Hinge Action"]
+    dimensions: { lensWidth: 50, bridgeWidth: 22, templeLength: 150 },
+    description: "Since 1952, the Wayfarer has been the gold standard of effortless style. Premium handcrafted Italian acetate with 100% UV-blocking crystal green lenses.",
+    features: ["100% UVA / UVB Protection", "Signature Raised Silver Rivets", "Scratch-Resistant Crystal Glass", "Available at Vadakkencherry & Alathur"]
   },
   {
-    id: "opt-04",
-    name: "Falcon Aviator Polarized",
-    brand: "Optimex Solar",
-    tagline: "Military-spec stainless steel aviator with Category 3 HD polarized lenses",
-    price: 3299,
-    originalPrice: 4599,
+    id: "rb-02",
+    name: "Ray-Ban Aviator Classic Gold",
+    brand: "Ray-Ban",
+    tagline: "Iconic teardrop pilot sunglasses with 24K gold wireframe & G-15 lenses",
+    priceText: "₹5,490 onwards",
     category: "sunglasses",
     gender: "unisex",
     shape: "aviator",
     material: "metal",
     frameType: "full-rim",
-    isNew: false,
     isBestseller: true,
     rating: 5.0,
-    reviewsCount: 215,
     images: [
-      "https://images.unsplash.com/photo-1511499767150-a48a237f0083?auto=format&fit=crop&w=900&q=80",
-      "https://images.unsplash.com/photo-1572635196237-14b3f281503f?auto=format&fit=crop&w=900&q=80"
+      "https://images.unsplash.com/photo-1508296695146-257a814070b4?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1511499767150-a48a237f0083?auto=format&fit=crop&w=800&q=80"
     ],
     colors: [
-      { name: "24K Gold / Bottle Green", hex: "#D4AF37", inStock: true },
-      { name: "Silver Ice / Smoke Tint", hex: "#C0C0C0", inStock: true },
-      { name: "Stealth Black / Cobalt Mirror", hex: "#2D3748", inStock: true }
+      { name: "Polished Gold", hex: "#D4AF37" },
+      { name: "Matte Gunmetal", hex: "#4B5563" },
+      { name: "Silver Mirror", hex: "#E5E7EB" }
     ],
-    dimensions: { lensWidth: 58, bridgeWidth: 14, templeLength: 145 },
-    description: "Engineered for intense sunlight and driving glare. Polarized acoustic wafer eliminates 99.9% of surface glare on highways and water surfaces.",
-    faceShapeFit: ["square", "heart", "oval"],
-    features: ["HD Polarized Glare Elimination", "Oleophobic Smudge Shield", "Double Brow Bridge Reinforcement", "100% UV400 Protection"]
+    dimensions: { lensWidth: 58, bridgeWidth: 14, templeLength: 135 },
+    description: "Originally designed for US aviators in 1937. Delivers legendary clarity, comfort, and protection with adjustable silicone nose pads.",
+    features: ["G-15 Contrast Lenses", "Featherlight Metal Alloy", "Dual Brow Bar Reinforcement", "Prescription Ready"]
   },
   {
-    id: "opt-05",
-    name: "CyberShield Blue-Blocker Pro",
-    brand: "Optimex TechOptics",
-    tagline: "450nm targeted high-energy blue frequency filtration for coders & creators",
-    price: 2199,
-    originalPrice: 2999,
+    id: "opt-01",
+    name: "Optimex Featherweight Beta-Titanium",
+    brand: "Optimex Signature",
+    tagline: "Ultra-light Japanese aerospace titanium weighing only 11 grams",
+    priceText: "₹2,490 onwards",
     category: "eyeglasses",
     gender: "unisex",
-    shape: "geometric",
+    shape: "round",
     material: "titanium",
-    frameType: "semi-rimless",
-    isNew: true,
+    frameType: "full-rim",
     isBestseller: true,
-    rating: 4.8,
-    reviewsCount: 89,
+    rating: 4.9,
     images: [
-      "https://images.unsplash.com/photo-1582142839970-2b93cbacbe6b?auto=format&fit=crop&w=900&q=80",
-      "https://images.unsplash.com/photo-1574258495973-f010dfbb5371?auto=format&fit=crop&w=900&q=80"
+      "https://images.unsplash.com/photo-1574258495973-f010dfbb5371?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1591076482161-42ce6da69f67?auto=format&fit=crop&w=800&q=80"
     ],
     colors: [
-      { name: "Frosted Titanium", hex: "#718096", inStock: true },
-      { name: "Bronze Ember", hex: "#8C6239", inStock: true },
-      { name: "Carbon Black", hex: "#1A202C", inStock: true }
+      { name: "Satin Champagne Gold", hex: "#D4AF37" },
+      { name: "Matte Noir", hex: "#1F2937" },
+      { name: "Gunmetal Slate", hex: "#4B5563" }
     ],
-    dimensions: { lensWidth: 50, bridgeWidth: 19, templeLength: 140 },
-    description: "Engineered specifically to alleviate screen-induced eye dryness, retina strain, and insomnia caused by continuous display exposure. Crystal clear with zero yellow distortion.",
-    faceShapeFit: ["round", "heart", "oval"],
-    features: ["Direct 450nm Screen Filter", "Zero Color Distortion", "Anti-Reflective Coating", "Ultra-Flexible Temples"]
+    dimensions: { lensWidth: 49, bridgeWidth: 20, templeLength: 145 },
+    description: "Engineered from memory beta-titanium that bends without losing alignment. Zero pressure on nose bridge or ears for 12+ hour daily computer work.",
+    features: ["Under 11g Ultra-Light Weight", "Screwless Durable Hinge", "Anti-Slip Medical Silicone Pads", "Complimentary Single Vision Anti-Glare"]
   },
   {
-    id: "opt-06",
-    name: "ZeroHorizon Titanium Rimless",
-    brand: "Optimex Elite",
-    tagline: "Floating rimless construction with high-tensile compression mounts",
-    price: 3899,
-    originalPrice: 5499,
+    id: "vog-01",
+    name: "Vogue Eyewear Lumina Cat-Eye",
+    brand: "Vogue Eyewear",
+    tagline: "Elegant feminine browline in glossy blush acetate with subtle gold details",
+    priceText: "₹3,290 onwards",
     category: "eyeglasses",
+    gender: "women",
+    shape: "cat-eye",
+    material: "acetate",
+    frameType: "full-rim",
+    isBestseller: false,
+    rating: 4.8,
+    images: [
+      "https://images.unsplash.com/photo-1509695503492-413833d296ae?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1577803645773-f96470509666?auto=format&fit=crop&w=800&q=80"
+    ],
+    colors: [
+      { name: "Rose Quartz", hex: "#FBCFE8" },
+      { name: "Havana Tortoise", hex: "#92400E" },
+      { name: "Gloss Jet Black", hex: "#111827" }
+    ],
+    dimensions: { lensWidth: 51, bridgeWidth: 17, templeLength: 140 },
+    description: "Chic modern cat-eye designed to complement Asian and Indian facial contours, elevating cheekbone symmetry.",
+    features: ["Feminine Sculpted Brow", "Hand-Buffed Luster", "Spring Action Hinge", "Blue-Cut Screen Filter Compatible"]
+  },
+  {
+    id: "oak-01",
+    name: "Oakley Sport Holbrook Matte Black",
+    brand: "Oakley",
+    tagline: "Performance sport frame with O-Matter durability and Prizm polarized lenses",
+    priceText: "₹5,890 onwards",
+    category: "sunglasses",
     gender: "men",
     shape: "rectangle",
-    material: "titanium",
-    frameType: "rimless",
-    isNew: false,
-    isBestseller: false,
+    material: "o-matter",
+    frameType: "full-rim",
+    isBestseller: true,
     rating: 4.9,
-    reviewsCount: 52,
     images: [
-      "https://images.unsplash.com/photo-1508296695146-257a814070b4?auto=format&fit=crop&w=900&q=80",
-      "https://images.unsplash.com/photo-1591076482161-42ce6da69f67?auto=format&fit=crop&w=900&q=80"
+      "https://images.unsplash.com/photo-1572635196237-14b3f281503f?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1511499767150-a48a237f0083?auto=format&fit=crop&w=800&q=80"
     ],
     colors: [
-      { name: "Platinum Silver", hex: "#E2E8F0", inStock: true },
-      { name: "Champagne Gold", hex: "#ECC94B", inStock: true },
-      { name: "Charcoal Slate", hex: "#2D3748", inStock: true }
+      { name: "Matte Black / Prizm Black", hex: "#18181B" },
+      { name: "Woodgrain / Warm Amber", hex: "#713F12" }
     ],
-    dimensions: { lensWidth: 53, bridgeWidth: 17, templeLength: 145 },
-    description: "The pinnacle of executive understatement. Weighs under 9 grams. Unobstructed panoramic vision mounted directly to high-index shatterproof lenses.",
-    faceShapeFit: ["oval", "heart", "square"],
-    features: ["Pure Floating Rimless Field of View", "Under 9 Grams Total Weight", "Custom Diamond-Edge Lens Polishing", "Surgical Japanese Titanium"]
+    dimensions: { lensWidth: 55, bridgeWidth: 18, templeLength: 137 },
+    description: "Rugged, stress-resistant O-Matter frame with Oakley Three-Point Fit that holds lenses in precise optical alignment.",
+    features: ["Impact-Resistant Plutonite Lenses", "Prizm Contrast Tuning", "Ultra-Lightweight O-Matter", "Ideal for Driving & Outdoor Sports"]
   },
   {
-    id: "opt-07",
-    name: "Kerala Sun Mirage Oversized",
-    brand: "Optimex Solar",
-    tagline: "Bold statement Italian acetate sunglasses with gradient sunset tint",
-    price: 2799,
-    originalPrice: 3999,
-    category: "sunglasses",
-    gender: "women",
+    id: "opt-02",
+    name: "Optimex CyberShield Screen Glasses",
+    brand: "Optimex Signature",
+    tagline: "Dedicated 450nm blue light blocking lenses in flexible lightweight frame",
+    priceText: "₹1,490 onwards",
+    category: "eyeglasses",
+    gender: "unisex",
+    shape: "rectangle",
+    material: "acetate",
+    frameType: "full-rim",
+    isBestseller: true,
+    rating: 4.9,
+    images: [
+      "https://images.unsplash.com/photo-1591076482161-42ce6da69f67?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1582142839970-2b93cbacbe6b?auto=format&fit=crop&w=800&q=80"
+    ],
+    colors: [
+      { name: "Midnight Black", hex: "#09090B" },
+      { name: "Frosted Crystal Grey", hex: "#9CA3AF" },
+      { name: "Deep Tortoise", hex: "#78350F" }
+    ],
+    dimensions: { lensWidth: 52, bridgeWidth: 18, templeLength: 142 },
+    description: "Specially formulated for programmers, students, and office professionals. Eliminates screen glare, dryness, and sleeplessness.",
+    features: ["Blocks 99% Harmful Blue Wavelengths", "Zero Yellow Tint Clarity", "Anti-Reflective Coating", "Available with or without Prescription"]
+  },
+  {
+    id: "opt-03",
+    name: "Heritage Tortoise Bio-Acetate",
+    brand: "Optimex Classics",
+    tagline: "Classic intellectual aesthetic hand-cured from organic bio-acetate",
+    priceText: "₹1,990 onwards",
+    category: "eyeglasses",
+    gender: "men",
     shape: "square",
     material: "acetate",
     frameType: "full-rim",
-    isNew: true,
-    isBestseller: true,
-    rating: 4.9,
-    reviewsCount: 116,
+    isBestseller: false,
+    rating: 4.8,
     images: [
-      "https://images.unsplash.com/photo-1572635196237-14b3f281503f?auto=format&fit=crop&w=900&q=80",
-      "https://images.unsplash.com/photo-1509695503492-413833d296ae?auto=format&fit=crop&w=900&q=80"
+      "https://images.unsplash.com/photo-1508296695146-257a814070b4?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1574258495973-f010dfbb5371?auto=format&fit=crop&w=800&q=80"
     ],
     colors: [
-      { name: "Amber Gradient Sunset", hex: "#C68B59", inStock: true },
-      { name: "Gloss Jet Noir", hex: "#0F172A", inStock: true },
-      { name: "Olive Smoke Demi", hex: "#556B2F", inStock: true }
+      { name: "Warm Amber Tortoise", hex: "#B45309" },
+      { name: "Classic Noir", hex: "#18181B" }
     ],
-    dimensions: { lensWidth: 55, bridgeWidth: 19, templeLength: 145 },
-    description: "Sleek, glamorous eyewear designed for tropical Kerala sun and seaside escapes. Provides full eye and cheekbone UV protection with premium gradient tint.",
-    faceShapeFit: ["round", "oval"],
-    features: ["Full UV400 Protection", "Gradient Polycarbonate Optics", "Optimex Gold Core Inlay", "Beveled Organic Contours"]
+    dimensions: { lensWidth: 53, bridgeWidth: 19, templeLength: 145 },
+    description: "Chiseled masculine profile with German five-barrel hinges and custom inner core wire detailing for easy temple shaping.",
+    features: ["Durable 5-Barrel Hinges", "Bio-Acetate Material", "Deep Lens Channel for Progressives", "Polished Bevel Finish"]
   },
   {
-    id: "opt-08",
-    name: "OptiHydro Pure Contact Lenses (30 Pack)",
-    brand: "Optimex ContactCare",
-    tagline: "Breathable daily silicone hydrogel lenses with HydraLock moisture matrix",
-    price: 1199,
-    originalPrice: 1599,
+    id: "cont-01",
+    name: "Bausch + Lomb & Acuvue Daily Contacts",
+    brand: "Contact Care",
+    tagline: "Breathable moisture-rich daily and monthly disposable contact lenses",
+    priceText: "₹850 / box onwards",
     category: "contact-lenses",
     gender: "unisex",
     shape: "contact",
     material: "hydrogel",
     frameType: "none",
-    isNew: false,
     isBestseller: true,
     rating: 4.8,
-    reviewsCount: 310,
     images: [
-      "https://images.unsplash.com/photo-1582142839970-2b93cbacbe6b?auto=format&fit=crop&w=900&q=80"
+      "https://images.unsplash.com/photo-1582142839970-2b93cbacbe6b?auto=format&fit=crop&w=800&q=80"
     ],
     colors: [
-      { name: "Clear Blue Visibility Tint", hex: "#93C5FD", inStock: true }
+      { name: "Clear with Handling Tint", hex: "#93C5FD" }
     ],
-    dimensions: { lensWidth: 14.2, bridgeWidth: 8.5, templeLength: 0 },
-    description: "Provides 6x oxygen flow compared to ordinary contacts. Infused with smart hyaluronic acid moisture lock to keep eyes fresh from morning until late night.",
-    faceShapeFit: ["all"],
-    features: ["Breathable Dk/t 130 Matrix", "UV Blocking Filtration", "Soft Insertion Edge", "16-Hour Hydration Lock"]
-  }
-];
-
-export const LENS_PACKAGES = [
-  {
-    id: "clear-standard",
-    name: "Standard Digital Hard-Coat",
-    price: 0,
-    thickness: "1.56 Index",
-    description: "Includes anti-scratch, anti-reflective, and water-repellent hydrophobic coating at zero extra cost.",
-    recommended: false
-  },
-  {
-    id: "blue-defense",
-    name: "CyberShield Blue-Defend Plus",
-    price: 599,
-    thickness: "1.61 Thin Index",
-    description: "Blocks high-energy 450nm blue light from screens, smartphones, and office LED fixtures. Relieves digital strain.",
-    recommended: true
-  },
-  {
-    id: "photochromic",
-    name: "Smart Photogray (Light-Reactive)",
-    price: 1199,
-    thickness: "1.61 Thin Index",
-    description: "Transitions smoothly into dark sunglasses under Kerala outdoor sunlight within 30 seconds, crystal clear indoors.",
-    recommended: false
-  },
-  {
-    id: "ultra-thin",
-    name: "Ultra-Thin High Index 1.67",
-    price: 1499,
-    thickness: "1.67 Ultra-Thin",
-    description: "Up to 45% thinner and lighter for high prescriptions (+/- 3.00 diopters and above). Polished bevel edges.",
-    recommended: false
+    dimensions: { lensWidth: 14.2, bridgeWidth: 8.6, templeLength: 0 },
+    description: "Trial pairs and corneal curvature fitting available at our clinics in Vadakkencherry and Alathur.",
+    features: ["High Oxygen Breathability", "Hydration Tear-Lock", "Free In-Store Trial & Insertion Guidance", "Spherical & Toric Available"]
   }
 ];
 
@@ -277,7 +207,7 @@ export const STORE_LOCATIONS = [
   {
     id: "vadakkencherry",
     name: "Optimex Optical - Vadakkencherry",
-    town: "Vadakkencherry, Kerala",
+    town: "Vadakkencherry",
     district: "Palakkad District",
     state: "Kerala, India",
     rating: 3.3,
@@ -285,22 +215,23 @@ export const STORE_LOCATIONS = [
     statusText: "Open · Closes 7 pm",
     closingTime: "7:00 PM",
     phone: "+91 94470 12345",
-    whatsapp: "+919447012345",
-    address: "Near Bus Stand, Main Road, Vadakkencherry, Palakkad, Kerala 678683",
-    optometrist: "Dr. K. Jayaprakash, Certified Optometrist",
-    features: [
+    whatsappNumber: "919447012345",
+    address: "Near Bus Stand, Main Road, Vadakkencherry, Kerala 678683",
+    optometrist: "Experienced Optician & Refractionist",
+    highlights: [
       "Computerized Eye Testing",
-      "Instant 20-Min Spectacle Fitting",
-      "Prescription Blue-Cut Lenses",
-      "Leading Brand Frames & Sunwear"
+      "Instant 20-Min Spectacle Delivery",
+      "Branded Frames (Ray-Ban, Vogue, Fastrack)",
+      "Affordable Prescription Lenses"
     ],
-    mapQuery: "Optimex+optical+Vadakkencherry+Kerala",
+    mapQuery: "Optimex optical Vadakkencherry Kerala",
+    mapUrl: "https://www.google.com/maps/search/?api=1&query=Optimex+optical+Vadakkencherry+Kerala",
     image: "https://images.unsplash.com/photo-1555421689-491a97ff2040?auto=format&fit=crop&w=900&q=80"
   },
   {
     id: "alathur",
     name: "Optimex Optical - Alathur",
-    town: "Alathur, Kerala",
+    town: "Alathur",
     district: "Palakkad District",
     state: "Kerala, India",
     rating: 4.3,
@@ -308,70 +239,109 @@ export const STORE_LOCATIONS = [
     statusText: "Open · Closes 8 pm",
     closingTime: "8:00 PM",
     phone: "+91 94470 67890",
-    whatsapp: "+919447067890",
-    address: "Court Road, Main Town, Alathur, Palakkad, Kerala 678541",
-    optometrist: "Dr. S. Radhakrishnan, Senior Refractionist",
-    features: [
-      "Comprehensive Digital Refraction",
+    whatsappNumber: "919447067890",
+    address: "Court Road, Main Town, Alathur, Kerala 678541",
+    optometrist: "Senior Optometrist & Vision Specialist",
+    highlights: [
+      "Full Eye Vision Checkup",
       "Progressive & Bifocal Specialists",
-      "Contact Lens Fitting Clinic",
-      "Children & Pediatric Vision Care"
+      "Huge Sunglasses & Frame Display",
+      "Contact Lens Trial & Solutions"
     ],
-    mapQuery: "Optimex+optical+Alathur+Kerala",
+    mapQuery: "Optimex optical Alathur Kerala",
+    mapUrl: "https://www.google.com/maps/search/?api=1&query=Optimex+optical+Alathur+Kerala",
     image: "https://images.unsplash.com/photo-1519643381401-22c77e60520e?auto=format&fit=crop&w=900&q=80"
   }
 ];
 
-export const EXAM_SERVICES = [
+export const GOOGLE_REVIEWS = [
   {
-    id: "computerized-eye-test",
-    title: "Computerized Eye Testing & Vision Check",
-    duration: "20 mins",
-    price: 150,
-    freeWithFrame: true,
-    description: "Digital auto-refractor measurement, visual acuity chart test, astigmatism detection, and updated prescription."
+    id: "rev-1",
+    author: "Pradeep Kumar",
+    branch: "Optimex Optical - Alathur",
+    rating: 5,
+    date: "3 months ago",
+    content: "Very good optical shop in Alathur town. The eye checkup was done carefully using computerized machines. Got my Ray-Ban sunglasses fitted with prescription lenses in just 2 days. Polite staff and fair prices.",
+    helpful: 4
   },
   {
-    id: "progressive-consult",
-    title: "Progressive & Multifocal Lens Fitting",
-    duration: "30 mins",
-    price: 250,
-    freeWithFrame: true,
-    description: "Accurate pupillary distance (PD) measurement, seg height alignment, and reading corridor customization."
+    id: "rev-2",
+    author: "Sujith V. Nair",
+    branch: "Optimex Optical - Alathur",
+    rating: 5,
+    date: "5 months ago",
+    content: "Excellent service! I took my mother here for reading and distance progressive glasses. They took proper measurements and the glasses are very clear. No eye strain at all.",
+    helpful: 6
   },
   {
-    id: "contact-fitting",
-    title: "Contact Lens Trial & Corneal Assessment",
-    duration: "25 mins",
-    price: 200,
-    freeWithFrame: false,
-    description: "Tear-film stability assessment, curvature inspection, and hands-on lens insertion training."
+    id: "rev-3",
+    author: "Mohammed Aslam",
+    branch: "Optimex Optical - Vadakkencherry",
+    rating: 4,
+    date: "1 month ago",
+    content: "Located conveniently near Vadakkencherry bus stand. Good collection of light-weight metal frames and anti-glare blue-cut lenses for computer work. Fast delivery.",
+    helpful: 2
+  },
+  {
+    id: "rev-4",
+    author: "Reshma Ramesh",
+    branch: "Optimex Optical - Alathur",
+    rating: 4,
+    date: "2 months ago",
+    content: "Lots of trendy frame shapes like cat-eye and round frames. Staff helped me choose the right shape for my face. Very satisfied with the service in Alathur.",
+    helpful: 3
+  },
+  {
+    id: "rev-5",
+    author: "Haridas K.",
+    branch: "Optimex Optical - Vadakkencherry",
+    rating: 4,
+    date: "4 months ago",
+    content: "Affordable spectacle options and quick fitting. They also repaired my old broken frame for free while making new glasses. Good local shop.",
+    helpful: 1
   }
 ];
 
-export const TESTIMONIALS = [
+// Simple, clear optical lens comparisons (No confusing tech jargon)
+export const LENS_COMPARISONS = [
   {
-    id: 1,
-    name: "Unnikrishnan Nair",
-    role: "Software Engineer, Vadakkencherry",
-    rating: 5,
-    comment: "Got my Blue-Blocker glasses from Optimex Vadakkencherry. The eye testing was quick and spot-on. No more eye strain after 8 hours of coding.",
-    product: "CyberShield Pro"
+    id: "anti-glare",
+    title: "Anti-Glare Coating",
+    subtitle: "Eliminates Blinding Reflections",
+    tagline: "Essential for Night Driving & Clean Clear Eyes",
+    withFeature: "Crystal clear vision without ghost headlights, reflections, or glare on glass lenses.",
+    withoutFeature: "Blinding light halos from oncoming traffic, reflected glare on laptop screens.",
+    imageWith: "https://images.unsplash.com/photo-1509695503492-413833d296ae?auto=format&fit=crop&w=700&q=80",
+    imageWithout: "https://images.unsplash.com/photo-1591076482161-42ce6da69f67?auto=format&fit=crop&w=700&q=80"
   },
   {
-    id: 2,
-    name: "Dr. Anjali Menon",
-    role: "Professor, Alathur",
-    rating: 5,
-    comment: "Optimex Alathur crafted my progressive glasses perfectly. Zero distortion when shifting from laptop to reading papers. Highly recommend their optometrist.",
-    product: "Malabar Heritage Havana"
+    id: "blue-cut",
+    title: "Blue-Cut Screen Filter",
+    subtitle: "Protects Against Screen Fatigue",
+    tagline: "Blocks Harsh High-Frequency Mobile & Monitor Light",
+    withFeature: "Filters out 450nm blue light spectrum, relieving headaches, dry eyes, and evening fatigue.",
+    withoutFeature: "Direct screen glare causing eye strain, dryness, and sleeplessness.",
+    imageWith: "https://images.unsplash.com/photo-1582142839970-2b93cbacbe6b?auto=format&fit=crop&w=700&q=80",
+    imageWithout: "https://images.unsplash.com/photo-1574258495973-f010dfbb5371?auto=format&fit=crop&w=700&q=80"
   },
   {
-    id: 3,
-    name: "Muhammed Rashid",
-    role: "Architect, Palakkad",
-    rating: 5,
-    comment: "The titanium frame is unbelievably lightweight and durable. Their WhatsApp support was super fast in coordinating my prescription delivery.",
-    product: "AeroTitanium Alpha 01"
+    id: "uv-protection",
+    title: "100% UV400 Sun Protection",
+    subtitle: "Blocks Harsh Ultraviolet Rays",
+    tagline: "Shields Cornea & Retina from Tropical Sunlight",
+    withFeature: "Blocks 100% UVA & UVB rays, preventing long-term cataract and retinal damage in sunny Kerala.",
+    withoutFeature: "Dangerous UV rays penetrate unprotected eyes causing squinting and damage.",
+    imageWith: "https://images.unsplash.com/photo-1511499767150-a48a237f0083?auto=format&fit=crop&w=700&q=80",
+    imageWithout: "https://images.unsplash.com/photo-1508296695146-257a814070b4?auto=format&fit=crop&w=700&q=80"
+  },
+  {
+    id: "photogray",
+    title: "Photogray Auto-Transitions",
+    subtitle: "Clear Indoors, Dark Sunglasses Outdoors",
+    tagline: "2-in-1 Convenience Under Kerala Sun",
+    withFeature: "Instantly darkens within seconds outdoors under sunlight, switches back to crystal clear indoors.",
+    withoutFeature: "Need to constantly carry separate sunglasses and reading glasses.",
+    imageWith: "https://images.unsplash.com/photo-1572635196237-14b3f281503f?auto=format&fit=crop&w=700&q=80",
+    imageWithout: "https://images.unsplash.com/photo-1574258495973-f010dfbb5371?auto=format&fit=crop&w=700&q=80"
   }
 ];
