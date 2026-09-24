@@ -5,51 +5,59 @@ export const CategoryGrid = ({ onSelectCategory }) => {
   const categories = [
     {
       id: "eyeglasses",
-      title: "Eye Glasses",
+      tag: "COLLECTION 01",
+      title: "Eye Glasses Collection",
       subtitle: "Computer & Single Vision",
-      image: "https://images.unsplash.com/photo-1591076482161-42ce6da69f67?auto=format&fit=crop&w=700&q=80"
+      image: "/images/optical/moscot-tortoise.jpg"
     },
     {
       id: "sunglasses",
-      title: "Sunglasses",
-      subtitle: "Polarized & 100% UV",
-      image: "https://images.unsplash.com/photo-1511499767150-a48a237f0083?auto=format&fit=crop&w=700&q=80"
+      tag: "COLLECTION 02",
+      title: "Polarized Sunglasses",
+      subtitle: "Polarized & 100% UV Protection",
+      image: "/images/optical/yellow-tint-sunglasses.jpg"
     },
     {
       id: "contact-lenses",
-      title: "Contact Lenses",
+      tag: "COLLECTION 03",
+      title: "Contact Lenses Care",
       subtitle: "Daily & Monthly Moisture",
-      image: "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?auto=format&fit=crop&w=700&q=80"
+      image: "/images/optical/contact-lenses.jpg"
     },
     {
       id: "all",
-      title: "Designer Frames",
+      tag: "COLLECTION 04",
+      title: "Designer Optical Frames",
       subtitle: "Ray-Ban, Oakley, Vogue",
-      image: "https://images.unsplash.com/photo-1574258495973-f010dfbb5371?auto=format&fit=crop&w=700&q=80"
+      image: "/images/optical/bold-black-acetate.jpg"
     },
     {
       id: "eyeglasses",
-      title: "Men's Glasses",
+      tag: "COLLECTION 05",
+      title: "Men's Spectacles",
       subtitle: "Bold Acetate & Titanium",
-      image: "https://images.unsplash.com/photo-1508296695146-257a814070b4?auto=format&fit=crop&w=700&q=80"
+      image: "/images/optical/akila-ceres-black.jpg"
     },
     {
       id: "eyeglasses",
-      title: "Women's Glasses",
+      tag: "COLLECTION 06",
+      title: "Women's Eyewear",
       subtitle: "Cat-Eye & Elegant Curves",
-      image: "https://images.unsplash.com/photo-1516726817505-f5ed825624d8?auto=format&fit=crop&w=700&q=80"
+      image: "/images/optical/miumiu-oval-tortoise.jpg"
     },
     {
       id: "eyeglasses",
-      title: "Kids Glasses",
-      subtitle: "Flexible Unbreakable",
-      image: "https://images.unsplash.com/photo-1577803645773-f96470509666?auto=format&fit=crop&w=700&q=80"
+      tag: "COLLECTION 07",
+      title: "Flexible Kids Glasses",
+      subtitle: "Unbreakable Light Weight",
+      image: "/images/optical/kids-glasses.jpg"
     },
     {
       id: "eyeglasses",
-      title: "Multifocal & Progressive",
-      subtitle: "Seamless Vision Without Line",
-      image: "https://images.unsplash.com/photo-1572635196237-14b3f281503f?auto=format&fit=crop&w=700&q=80"
+      tag: "COLLECTION 08",
+      title: "Multifocal Lenses",
+      subtitle: "Seamless Distance & Reading",
+      image: "/images/optical/round-brown-acetate.jpg"
     }
   ];
 
@@ -60,48 +68,55 @@ export const CategoryGrid = ({ onSelectCategory }) => {
   };
 
   return (
-    <section id="categories" className="py-20 bg-optimex-darker border-t border-white/10 scroll-mt-20">
+    <section id="categories" className="py-12 sm:py-16 bg-slate-50 border-t border-slate-200 scroll-mt-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Section Header */}
-        <div className="text-center max-w-2xl mx-auto mb-14 space-y-2">
-          <span className="text-[10px] font-extrabold uppercase tracking-widest text-optimex-blue">
-            EXPLORE OUR CATEGORIES
+        {/* Section Header (ZERO White Text) */}
+        <div className="text-center max-w-2xl mx-auto mb-10 space-y-1">
+          <span className="text-[10px] font-black uppercase tracking-widest text-red-600 font-mono block">
+            FEATURED CATEGORIES
           </span>
-          <h2 className="text-3xl sm:text-4xl font-sans font-black text-white">
-            Optimex Eyeglass Stores & Collections
+          <h2 className="text-2xl sm:text-3xl font-sans font-black text-slate-900">
+            Eyewear & Clinic Collections
           </h2>
-          <p className="text-xs sm:text-sm text-slate-400 font-light">
-            Vast collection of prescription spectacles, sunglasses, and contact lenses to suit every style and budget.
-          </p>
         </div>
 
-        {/* 8 Card Grid matching Allen & Habour layout */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
+        {/* 8 Squircle Cards Grid (ZERO White Text - Black & Red Only) */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {categories.map((cat, idx) => (
             <div
               key={idx}
               onClick={() => handleCategoryClick(cat.id)}
-              className="group relative rounded-2xl overflow-hidden aspect-[4/3] bg-black border border-white/10 hover:border-optimex-blue/60 cursor-pointer shadow-liquid transition-all duration-300"
+              className="group squircle-card cursor-pointer flex flex-col justify-between bg-white border border-slate-200"
             >
-              <img
-                src={cat.image}
-                alt={cat.title}
-                className="w-full h-full object-cover object-center transform group-hover:scale-110 transition-transform duration-700 opacity-75 group-hover:opacity-90"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
+              {/* Inset Photo Window */}
+              <div className="squircle-image-slot aspect-[16/11] w-full flex items-center justify-center bg-slate-100">
+                <img
+                  src={cat.image}
+                  alt={cat.title}
+                  className="w-full h-full object-cover object-center transform group-hover:scale-105 transition-transform duration-700 rounded-[1.6rem]"
+                />
+              </div>
 
-              <div className="absolute bottom-3 left-4 right-4 flex items-end justify-between">
+              {/* Lower Text Content Area (ZERO White Text) */}
+              <div className="pt-4 pb-2 px-2 flex flex-col justify-between flex-1 space-y-3">
                 <div>
-                  <h3 className="text-sm sm:text-base font-bold text-white group-hover:text-optimex-red transition-colors">
+                  <span className="text-[10px] font-black uppercase tracking-widest text-slate-500 font-mono block mb-1">
+                    {cat.tag}
+                  </span>
+                  <h3 className="text-sm font-bold text-slate-900 leading-snug group-hover:text-red-600 transition-colors">
                     {cat.title}
                   </h3>
-                  <span className="text-[10px] sm:text-[11px] text-slate-400 font-light block">
+                  <p className="text-xs text-slate-700 font-normal mt-0.5">
                     {cat.subtitle}
-                  </span>
+                  </p>
                 </div>
-                <div className="w-7 h-7 rounded-full bg-white/10 group-hover:bg-optimex-blue text-white flex items-center justify-center shrink-0 transition-colors">
-                  <ArrowRight className="w-3.5 h-3.5 transform group-hover:translate-x-0.5 transition-transform" />
+
+                <div className="pt-2 border-t border-slate-100 flex items-center justify-between">
+                  <span className="text-[11px] text-red-600 font-bold">Explore styles</span>
+                  <div className="w-7 h-7 rounded-full bg-slate-900 group-hover:bg-red-600 text-red-500 group-hover:text-white flex items-center justify-center transition-all duration-300 transform group-hover:translate-x-1 shadow">
+                    <ArrowRight className="w-3.5 h-3.5" />
+                  </div>
                 </div>
               </div>
             </div>
