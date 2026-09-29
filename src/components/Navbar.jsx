@@ -108,7 +108,7 @@ export const Navbar = ({ activeCategory, setActiveCategory }) => {
                 className="flex items-center gap-1.5 bg-red-600 text-white hover:bg-red-700 px-3 py-1.5 rounded-full text-[10px] sm:text-[11px] font-black uppercase tracking-wider shadow-md transition-all whitespace-nowrap"
               >
                 <Calendar className="w-3 h-3 shrink-0" />
-                <span whitespace-nowrap>Book Exam</span>
+                <span className="whitespace-nowrap">Book Exam</span>
               </button>
             </div>
           </div>
