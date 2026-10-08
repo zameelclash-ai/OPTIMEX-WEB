@@ -1,0 +1,15 @@
+<!doctype html>
+<meta charset="utf-8" />
+<canvas id="c" width="1200" height="900"></canvas>
+<script type="module">
+  import { renderProduct } from '../src/three/studio.js';
+  import { PRODUCT_RENDERS, POSES } from '../src/three/presets.js';
+  window.__names = Object.keys(PRODUCT_RENDERS);
+  window.__render = (name, view, w = 1200, h = 900) => {
+    const old = document.getElementById('c');
+    const canvas = old.cloneNode();
+    old.replaceWith(canvas);
+    return renderProduct(canvas, PRODUCT_RENDERS[name], POSES[view], [w, h]);
+  };
+  window.__ready = true;
+</script>

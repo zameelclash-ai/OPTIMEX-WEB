@@ -13,8 +13,8 @@ export const PRODUCTS = [
     isBestseller: true,
     rating: 4.9,
     images: [
-      "https://images.unsplash.com/photo-1511499767150-a48a237f0083?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1572635196237-14b3f281503f?auto=format&fit=crop&w=800&q=80"
+      "/images/products/rb-01-a.png",
+      "/images/products/rb-01-b.png"
     ],
     colors: [
       { name: "Gloss Jet Black", hex: "#111827" },
@@ -38,8 +38,8 @@ export const PRODUCTS = [
     isBestseller: true,
     rating: 5.0,
     images: [
-      "https://images.unsplash.com/photo-1508296695146-257a814070b4?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1511499767150-a48a237f0083?auto=format&fit=crop&w=800&q=80"
+      "/images/products/rb-02-a.png",
+      "/images/products/rb-02-b.png"
     ],
     colors: [
       { name: "Polished Gold", hex: "#D4AF37" },
@@ -64,8 +64,8 @@ export const PRODUCTS = [
     isBestseller: true,
     rating: 4.9,
     images: [
-      "https://images.unsplash.com/photo-1574258495973-f010dfbb5371?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1591076482161-42ce6da69f67?auto=format&fit=crop&w=800&q=80"
+      "/images/products/opt-01-a.png",
+      "/images/products/opt-01-b.png"
     ],
     colors: [
       { name: "Satin Champagne Gold", hex: "#D4AF37" },
@@ -90,8 +90,8 @@ export const PRODUCTS = [
     isBestseller: false,
     rating: 4.8,
     images: [
-      "https://images.unsplash.com/photo-1516726817505-f5ed825624d8?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1546180245-c59500ad14d0?auto=format&fit=crop&w=800&q=80"
+      "/images/products/vog-01-a.png",
+      "/images/products/vog-01-b.png"
     ],
     colors: [
       { name: "Rose Quartz", hex: "#FBCFE8" },
@@ -116,8 +116,8 @@ export const PRODUCTS = [
     isBestseller: true,
     rating: 4.9,
     images: [
-      "https://images.unsplash.com/photo-1572635196237-14b3f281503f?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1511499767150-a48a237f0083?auto=format&fit=crop&w=800&q=80"
+      "/images/products/oak-01-a.png",
+      "/images/products/oak-01-b.png"
     ],
     colors: [
       { name: "Matte Black / Prizm Black", hex: "#18181B" },
@@ -141,8 +141,8 @@ export const PRODUCTS = [
     isBestseller: true,
     rating: 4.9,
     images: [
-      "https://images.unsplash.com/photo-1591076482161-42ce6da69f67?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1526045612212-70caf35c14df?auto=format&fit=crop&w=800&q=80"
+      "/images/products/opt-02-a.png",
+      "/images/products/opt-02-b.png"
     ],
     colors: [
       { name: "Midnight Black", hex: "#09090B" },
@@ -167,8 +167,8 @@ export const PRODUCTS = [
     isBestseller: false,
     rating: 4.8,
     images: [
-      "https://images.unsplash.com/photo-1508296695146-257a814070b4?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1574258495973-f010dfbb5371?auto=format&fit=crop&w=800&q=80"
+      "/images/products/opt-03-a.png",
+      "/images/products/opt-03-b.png"
     ],
     colors: [
       { name: "Warm Amber Tortoise", hex: "#B45309" },
@@ -192,7 +192,8 @@ export const PRODUCTS = [
     isBestseller: true,
     rating: 4.8,
     images: [
-      "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?auto=format&fit=crop&w=800&q=80"
+      "/images/products/cont-01-a.png",
+      "/images/products/cont-01-b.png"
     ],
     colors: [
       { name: "Clear with Handling Tint", hex: "#93C5FD" }
@@ -311,8 +312,6 @@ export const LENS_COMPARISONS = [
     withFeature: "Crystal-clear optics with green AR reflection that eliminates oncoming headlight starbursts and double reflections.",
     withoutFeature: "Blinding halos from oncoming traffic, reflected glare on laptop screens, and dirty ghost light artifacts.",
     idealFor: "Night drivers, car & motorcycle commuters, evening office workers",
-    imageWith: "https://images.unsplash.com/photo-1588850561407-ed78c282e89b?auto=format&fit=crop&w=800&q=80",
-    imageWithout: "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?auto=format&fit=crop&w=800&q=80"
   },
   {
     id: "blue-cut",
@@ -322,8 +321,6 @@ export const LENS_COMPARISONS = [
     withFeature: "Filters out the 450nm harmful blue light spectrum, preventing eye strain, dryness, and late-night insomnia.",
     withoutFeature: "Direct screen glare causing throbbing headaches, dry gritty eyes, and disrupted melatonin sleep cycles.",
     idealFor: "Software professionals, students studying online, smartphone power users",
-    imageWith: "https://images.unsplash.com/photo-1526045612212-70caf35c14df?auto=format&fit=crop&w=800&q=80",
-    imageWithout: "https://images.unsplash.com/photo-1574258495973-f010dfbb5371?auto=format&fit=crop&w=800&q=80"
   },
   {
     id: "uv-protection",
@@ -333,8 +330,6 @@ export const LENS_COMPARISONS = [
     withFeature: "Blocks 100% UVA & UVB rays with polarized contrast tuning to prevent long-term cataract and pterygium in sunny Kerala.",
     withoutFeature: "Dangerous UV rays penetrate unprotected dilated pupils causing squinting, cataracts, and premature retina aging.",
     idealFor: "Two-wheeler riders, outdoor workers, beach & vacation wear",
-    imageWith: "https://images.unsplash.com/photo-1511499767150-a48a237f0083?auto=format&fit=crop&w=800&q=80",
-    imageWithout: "https://images.unsplash.com/photo-1473496169904-658ba7c44d8a?auto=format&fit=crop&w=800&q=80"
   },
   {
     id: "photogray",
@@ -344,7 +339,5 @@ export const LENS_COMPARISONS = [
     withFeature: "Instantly darkens to cool sunglasses within 15 seconds under UV sunlight, seamlessly returning to crystal clear indoors.",
     withoutFeature: "Need to constantly juggle and carry separate sunglasses and reading spectacles everywhere you go.",
     idealFor: "All-day spectacle wearers who frequently move between indoors and outdoors",
-    imageWith: "https://images.unsplash.com/photo-1572635196237-14b3f281503f?auto=format&fit=crop&w=800&q=80",
-    imageWithout: "https://images.unsplash.com/photo-1591076482161-42ce6da69f67?auto=format&fit=crop&w=800&q=80"
   }
 ];
