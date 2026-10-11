@@ -24,7 +24,6 @@ export const ProductCatalog = ({ activeCategory, setActiveCategory }) => {
       <div className="wrap">
         <div className="section__head section__head--split">
           <Reveal>
-            <p className="eyebrow" style={{ marginBottom: 22 }}>Featured in Kerala showrooms</p>
             <h2 className="h2">Eyewear &amp; Sunglasses<br /><em>Collection</em></h2>
           </Reveal>
         </div>

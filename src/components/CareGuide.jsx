@@ -13,14 +13,12 @@ export const CareGuide = () => (
   <section className="section section--dark" style={{ borderTop: '1px solid rgba(255,255,255,.08)' }}>
     <div className="wrap">
       <div className="section__head">
-        <Reveal><p className="eyebrow">Optometrist eye health advice</p></Reveal>
         <Reveal delay={90}><h2 className="h2" style={{ color: '#f6f0e1' }}>Preserving Your Vision<br /><em>&amp; Lens Investment</em></h2></Reveal>
         <Reveal delay={160}><p className="lede" style={{ color: 'rgba(239,233,219,.68)' }}>Practices recommended by our optometrists to prevent screen fatigue and prolong frame durability.</p></Reveal>
       </div>
       <div className="care">
         {TIPS.map((t, i) => (
           <Reveal key={t.title} className="care__item" delay={i * 110}>
-            <i>0{i + 1}</i>
             <Icon name={t.icon} size={26} stroke={1.3} />
             <h3>{t.title}</h3>
             <p>{t.desc}</p>

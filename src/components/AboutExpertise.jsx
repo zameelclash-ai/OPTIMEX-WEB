@@ -24,7 +24,7 @@ export const AboutExpertise = () => {
       <div className="wrap about">
         <div className="showcase">
           {SHOWCASE.map((c, i) => (
-            <div key={c.id} className="showcase__col" data-speed={c.speed}>
+            <div key={c.id} className="showcase__col">
               <Reveal delay={i * 140}>
                 <figure className="group">
                   <div className="pstage pstage--tall">
@@ -32,7 +32,6 @@ export const AboutExpertise = () => {
                     <span className="tag">{c.tag}</span>
                   </div>
                   <figcaption>
-                    <small>Showcase {c.id}</small>
                     <b>{c.title}</b>
                     <span>{c.sub}</span>
                   </figcaption>
@@ -43,11 +42,10 @@ export const AboutExpertise = () => {
         </div>
 
         <div className="about__copy">
-          <Reveal><p className="eyebrow">Our clinical vision, your eye clarity</p></Reveal>
           <Reveal delay={80}>
             <h2 className="h2">Your Vision,<br /><em>Our Expertise</em></h2>
           </Reveal>
-          <Reveal delay={140}><p style={{ fontFamily: 'var(--serif)', fontSize: '1.45rem', fontStyle: 'italic', lineHeight: 1.3 }}>Optimex Eye Stores &amp; Computerised Eye Clinics</p></Reveal>
+          <Reveal delay={140}><p className="kicker">Optimex Eye Stores &amp; Computerised Eye Clinics</p></Reveal>
           <Reveal delay={200}>
             <p>
               At Optimex Opticals, we are committed to delivering optical precision, enduring comfort, and personal style. Located in Vadakkencherry and Alathur, our clinics feature modern computerized auto-refractor testing, high-definition digital lens edging, and a curated selection of global and homegrown brands starting at ₹999.
@@ -57,7 +55,6 @@ export const AboutExpertise = () => {
           <div className="promises">
             {PROMISES.map((p, i) => (
               <Reveal key={p.title} className="promise" delay={i * 90}>
-                <i>0{i + 1}</i>
                 <b>{p.title}</b>
                 <p>{p.desc}</p>
               </Reveal>

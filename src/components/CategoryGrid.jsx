@@ -25,8 +25,7 @@ export const CategoryGrid = ({ onSelectCategory }) => {
       <div className="wrap">
         <div className="section__head section__head--split">
           <Reveal>
-            <p className="eyebrow" style={{ marginBottom: 22 }}>Featured categories</p>
-            <h2 className="h2">Eyewear &amp; Clinic<br /><em>Collections</em></h2>
+            <h2 className="h2">Eyewear &amp; Clinic<br />Collections</h2>
           </Reveal>
           <Reveal delay={120}><p className="lede">Eight ways into the collection — from precision single-vision lenses to bold designer acetate, all fitted in about twenty minutes.</p></Reveal>
         </div>
@@ -41,7 +40,6 @@ export const CategoryGrid = ({ onSelectCategory }) => {
                 </div>
                 <div className="cat__meta">
                   <div>
-                    <small>COLLECTION {c.tag}</small>
                     <b>{c.title}</b>
                     <span>{c.subtitle}</span>
                   </div>

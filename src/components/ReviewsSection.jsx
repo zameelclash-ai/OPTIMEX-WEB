@@ -23,7 +23,7 @@ const GoogleG = () => (
 export const ReviewsSection = () => (
   <section id="google-reviews" className="section">
     <div className="wrap">
-      <div className="section__head section__head--center">
+      <div className="section__head">
         <Reveal><p className="gbadge"><GoogleG /> Verified Google reviews &amp; ratings</p></Reveal>
         <Reveal delay={90}><h2 className="h2">What Local Customers<br /><em>Say on Google</em></h2></Reveal>
         <Reveal delay={160}><p className="lede">Read authentic reviews from customers who got their eye examinations and spectacles from our Vadakkencherry and Alathur stores.</p></Reveal>

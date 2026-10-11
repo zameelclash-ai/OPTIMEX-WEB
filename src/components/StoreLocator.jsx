@@ -15,8 +15,7 @@ export const StoreLocator = () => {
   return (
     <section id="store-locator" className="section section--dark">
       <div className="wrap">
-        <div className="section__head section__head--center">
-          <Reveal><p className="eyebrow"><i className="dot dot--ok" style={{ display: 'inline-block' }} /> Kerala showrooms &amp; eye clinics</p></Reveal>
+        <div className="section__head">
           <Reveal delay={90}><h2 className="h2" style={{ color: '#f6f0e1' }}>Visit Our Showrooms<br /><em>in Kerala</em></h2></Reveal>
           <Reveal delay={160}><p className="lede" style={{ color: 'rgba(239,233,219,.68)' }}>Walk into our stores in Vadakkencherry or Alathur for computerized refraction eye tests, Ray-Ban &amp; branded eyewear, and 20-minute rapid spectacle delivery.</p></Reveal>
         </div>

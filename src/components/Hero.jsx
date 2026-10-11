@@ -47,8 +47,9 @@ export const Hero = () => {
           <p className="eyebrow hero__fade" style={{ '--ad': '0.1s' }}>Computerised Eye Clinic &amp; Optical Showrooms</p>
 
           <h1 className="display">
-            <span className="mask"><span style={{ '--i': 0 }}>Precision Vision</span></span>
-            <span className="mask"><span style={{ '--i': 1 }}><em>&amp; Executive Eyewear</em></span></span>
+            <span className="mask l1"><span style={{ '--i': 0 }}>Precision</span></span>
+            <span className="mask l2"><span style={{ '--i': 1 }}>vision &amp; executive</span></span>
+            <span className="mask l3"><span style={{ '--i': 2 }}>eyewear</span></span>
           </h1>
 
           <p className="lede hero__fade" style={{ '--ad': '0.75s' }}>
@@ -86,8 +87,6 @@ export const Hero = () => {
 
         <SunglassesMatrixCanvas />
       </div>
-
-      <div className="hero__scroll" aria-hidden="true"><span>Scroll</span><i /></div>
     </section>
   );
 };

@@ -83,13 +83,12 @@ export const LensVisualGuide = () => {
   return (
     <section id="lens-guide" className="section section--sand">
       <div className="wrap">
-        <div className="section__head section__head--center">
-          <Reveal><p className="eyebrow">Practical eyecare &amp; lens guide</p></Reveal>
+        <div className="section__head">
           <Reveal delay={90}><h2 className="h2">Which Lenses Do<br /><em>Your Eyes Need?</em></h2></Reveal>
           <Reveal delay={160}><p className="lede">Real optical lens coating comparisons available with 20-minute rapid fitting at Vadakkencherry &amp; Alathur showrooms.</p></Reveal>
         </div>
 
-        <Reveal className="tabs" style={{ justifyContent: 'center', marginBottom: 'clamp(36px, 5vw, 64px)' }}>
+        <Reveal className="tabs" style={{ marginBottom: 'clamp(36px, 5vw, 64px)' }}>
           {LENS_COMPARISONS.map((l, i) => (
             <button key={l.id} className={`tab ${tab === i ? 'is-on' : ''}`} onClick={() => { setTab(i); setProtected(true); }} style={{ display: 'inline-flex', gap: 10, alignItems: 'center' }}>
               <Icon name={ICONS[i]} size={15} /> {l.title}

@@ -24,7 +24,7 @@ export const Footer = () => {
     <footer className="footer">
       <div className="wrap">
         <Reveal className="offer">
-          <p className="eyebrow" style={{ color: 'var(--gold-2)' }}>Our biggest discount ever</p>
+          <p className="kicker" style={{ color: 'var(--gold-2)' }}>Our biggest discount ever</p>
           <h3>follow us now<br /><em>GET UP TO 22% OFF</em></h3>
           <p>Follow our official Instagram account and visit our optical showrooms in Alathur or Vadakkencherry to claim your 22% discount.</p>
           <div className="row">
