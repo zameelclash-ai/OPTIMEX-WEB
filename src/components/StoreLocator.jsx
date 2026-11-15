@@ -20,17 +20,14 @@ export const StoreLocator = () => {
             <h2 className="h-section">Two stores in <em>Palakkad.</em></h2>
           </div>
           <p className="lead">
-            Same team, same standards, same prices at both. Come to whichever is closer.
+            Visit whichever is closer — both have computerised eye testing and a full frame display.
           </p>
         </div>
 
         <div className="stores">
           {STORE_LOCATIONS.map((s) => (
             <article className="store" key={s.id}>
-              <div className="store__img">
-                <img src={s.image} alt={`${s.name} store`} loading="lazy" />
-              </div>
-              <div className="store__body">
+              
                 <div>
                   <div className="store__town">{s.district}</div>
                   <h3>{s.town}</h3>
@@ -52,7 +49,7 @@ export const StoreLocator = () => {
                 </ul>
 
                 <div className="store__actions">
-                  <button className="btn btn--red btn--sm" onClick={() => book(s.id)}>Book eye test</button>
+                  <button className="btn btn--red" onClick={() => book(s.id)}>Book eye test</button>
                   <a className="btn btn--line btn--sm" href={s.mapUrl} target="_blank" rel="noreferrer">
                     Directions <IconExternal size={15} />
                   </a>
@@ -65,14 +62,13 @@ export const StoreLocator = () => {
                     <IconWhatsApp size={16} /> WhatsApp
                   </a>
                 </div>
-              </div>
             </article>
           ))}
         </div>
 
         <div className="reviews-note">
           <span>Been to one of our stores? A short Google review really helps a local shop.</span>
-          <div style={{ display: 'flex', gap: 20, flexWrap: 'wrap' }}>
+          <div>
             {STORE_LOCATIONS.map((s) => (
               <a key={s.id} className="link" href={s.mapUrl} target="_blank" rel="noreferrer">
                 Review {s.town} <IconExternal size={14} />

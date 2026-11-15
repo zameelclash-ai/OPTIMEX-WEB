@@ -28,8 +28,10 @@ export const VisitSteps = () => {
           {STEPS.map((s, i) => (
             <div className="step" key={s.title}>
               <div className="step__no">{i + 1}.</div>
-              <h3>{s.title}</h3>
-              <p>{s.text}</p>
+              <div>
+                <h3>{s.title}</h3>
+                <p>{s.text}</p>
+              </div>
             </div>
           ))}
         </div>

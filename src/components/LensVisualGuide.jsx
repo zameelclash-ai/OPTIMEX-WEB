@@ -47,6 +47,7 @@ export const LensVisualGuide = () => (
           </div>
         ))}
       </div>
+      <div className="swipe-hint">Swipe for more →</div>
     </div>
   </section>
 );

@@ -58,7 +58,7 @@ export const Services = ({ setActiveCategory }) => {
               <span className="service__no">0{i + 1}</span>
               <h3>{it.title}</h3>
               <p>{it.text}</p>
-              <span className="service__go">{it.cta} <IconArrow size={16} /></span>
+              <span className="service__go" aria-hidden="true"><IconArrow size={18} /></span>
             </button>
           ))}
         </div>

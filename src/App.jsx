@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { StoreProvider, useStore } from './context/CartContext';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
+import { About } from './components/About';
 import { Services } from './components/Services';
 import { ProductCatalog } from './components/ProductCatalog';
 import { LensVisualGuide } from './components/LensVisualGuide';
@@ -27,6 +28,7 @@ const Page = () => {
       <Navbar setActiveCategory={setActiveCategory} />
       <main>
         <Hero />
+        <About />
         <Services setActiveCategory={setActiveCategory} />
         <ProductCatalog activeCategory={activeCategory} setActiveCategory={setActiveCategory} />
         <LensVisualGuide />

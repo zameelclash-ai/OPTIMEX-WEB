@@ -30,7 +30,7 @@ export const Footer = ({ setActiveCategory }) => {
       <footer className="footer">
         <div className="wrap">
           <div className="footer__grid">
-            <div>
+            <div className="footer__brand">
               <span className="footer__logo">
                 <img src="/images/optimex-official-logo.png" alt="Optimex Opticals" />
               </span>
