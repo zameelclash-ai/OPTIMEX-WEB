@@ -41,7 +41,7 @@ export const Services = ({ setActiveCategory }) => {
   return (
     <section className="section" id="services">
       <div className="wrap">
-        <div className="section__head">
+        <div className="section__head" data-reveal>
           <div>
             <span className="eyebrow">What we do</span>
             <h2 className="h-section">Everything for your eyes, <em>under one roof.</em></h2>
@@ -54,7 +54,7 @@ export const Services = ({ setActiveCategory }) => {
 
         <div className="services">
           {items.map((it, i) => (
-            <button className="service" key={it.title} onClick={it.action}>
+            <button className="service" key={it.title} onClick={it.action} data-reveal style={{ '--i': i % 2 }}>
               <span className="service__no">0{i + 1}</span>
               <h3>{it.title}</h3>
               <p>{it.text}</p>

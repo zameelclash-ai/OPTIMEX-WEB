@@ -13,7 +13,7 @@ export const VisitSteps = () => {
   return (
     <section className="section section--ink">
       <div className="wrap">
-        <div className="section__head">
+        <div className="section__head" data-reveal>
           <div>
             <span className="eyebrow" style={{ color: '#b9b5ac' }}>Your visit</span>
             <h2 className="h-section">Simple, from <em>test to fitting.</em></h2>
@@ -26,7 +26,7 @@ export const VisitSteps = () => {
         </div>
         <div className="steps">
           {STEPS.map((s, i) => (
-            <div className="step" key={s.title}>
+            <div className="step" key={s.title} data-reveal style={{ '--i': i }}>
               <div className="step__no">{i + 1}.</div>
               <div>
                 <h3>{s.title}</h3>

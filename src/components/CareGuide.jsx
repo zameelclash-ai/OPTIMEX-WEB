@@ -10,15 +10,15 @@ const TIPS = [
 export const CareGuide = () => (
   <section className="section section--tight">
     <div className="wrap">
-      <div className="section__head">
+      <div className="section__head" data-reveal>
         <div>
           <span className="eyebrow">Eye care</span>
           <h2 className="h-section">Small habits, <em>better eyes.</em></h2>
         </div>
       </div>
       <div className="tips">
-        {TIPS.map((t) => (
-          <div className="tip" key={t.title}>
+        {TIPS.map((t, i) => (
+          <div className="tip" key={t.title} data-reveal style={{ '--i': i }}>
             <div className="tip__rule" />
             <h3>{t.title}</h3>
             <p>{t.text}</p>

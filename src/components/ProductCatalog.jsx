@@ -22,7 +22,7 @@ export const ProductCatalog = ({ activeCategory, setActiveCategory }) => {
   return (
     <section className="section section--alt" id="collection-section">
       <div className="wrap">
-        <div className="section__head">
+        <div className="section__head" data-reveal>
           <div>
             <span className="eyebrow">In the store now</span>
             <h2 className="h-section">A few frames <em>we like.</em></h2>
@@ -49,13 +49,13 @@ export const ProductCatalog = ({ activeCategory, setActiveCategory }) => {
 
         {products.length > 0 ? (
           <div className="products">
-            {products.map((p) => <ProductCard key={p.id} product={p} />)}
+            {products.map((p, i) => <ProductCard key={`${activeCategory}-${p.id}`} product={p} index={i} />)}
           </div>
         ) : (
           <p className="muted">Nothing listed online in this category yet — ask us on WhatsApp.</p>
         )}
 
-        <div className="ask">
+        <div className="ask" data-reveal>
           <div>
             <h3>Looking for a particular frame or power?</h3>
             <p>Send us a photo of the frame or your prescription and we'll check stock at both stores.</p>

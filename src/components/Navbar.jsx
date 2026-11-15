@@ -14,6 +14,20 @@ const LINKS = [
 export const Navbar = ({ setActiveCategory }) => {
   const { setIsExamModalOpen } = useStore();
   const [open, setOpen] = useState(false);
+  const [hidden, setHidden] = useState(false);
+
+  // Hide header when scrolling down, show when scrolling up
+  useEffect(() => {
+    let last = window.scrollY;
+    const onScroll = () => {
+      const y = window.scrollY;
+      if (Math.abs(y - last) < 6) return;
+      setHidden(y > last && y > 260);
+      last = y;
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
 
   useEffect(() => {
     document.body.style.overflow = open ? 'hidden' : '';
@@ -42,7 +56,7 @@ export const Navbar = ({ setActiveCategory }) => {
         </div>
       </div>
 
-      <header className="header">
+      <header className={`header${hidden && !open ? ' is-hidden' : ''}`}>
         <div className="wrap">
           <div className="header__row">
             <a

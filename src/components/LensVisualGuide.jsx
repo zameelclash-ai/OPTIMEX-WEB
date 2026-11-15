@@ -26,7 +26,7 @@ const LENSES = [
 export const LensVisualGuide = () => (
   <section className="section" id="lens-guide">
     <div className="wrap">
-      <div className="section__head">
+      <div className="section__head" data-reveal>
         <div>
           <span className="eyebrow">Lens guide</span>
           <h2 className="h-section">Not sure which lens? <em>Start here.</em></h2>
@@ -39,7 +39,7 @@ export const LensVisualGuide = () => (
 
       <div className="lenses">
         {LENSES.map((l, i) => (
-          <div className="lens" key={l.title}>
+          <div className="lens" key={l.title} data-reveal style={{ '--i': i }}>
             <span className="lens__no">0{i + 1}</span>
             <h3>{l.title}</h3>
             <p>{l.text}</p>

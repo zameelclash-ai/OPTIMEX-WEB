@@ -1,4 +1,6 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { initMotion } from './lib/motion';
+import { Marquee } from './components/Marquee';
 import { StoreProvider, useStore } from './context/CartContext';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
@@ -22,12 +24,15 @@ const Toast = () => {
 
 const Page = () => {
   const [activeCategory, setActiveCategory] = useState('all');
+  useEffect(() => initMotion(), []);
 
   return (
     <>
+      <div className="progress" aria-hidden="true" />
       <Navbar setActiveCategory={setActiveCategory} />
       <main>
         <Hero />
+        <Marquee />
         <About />
         <Services setActiveCategory={setActiveCategory} />
         <ProductCatalog activeCategory={activeCategory} setActiveCategory={setActiveCategory} />

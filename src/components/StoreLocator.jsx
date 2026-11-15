@@ -14,7 +14,7 @@ export const StoreLocator = () => {
   return (
     <section className="section section--alt" id="store-locator">
       <div className="wrap">
-        <div className="section__head">
+        <div className="section__head" data-reveal>
           <div>
             <span className="eyebrow">Visit us</span>
             <h2 className="h-section">Two stores in <em>Palakkad.</em></h2>
@@ -26,7 +26,7 @@ export const StoreLocator = () => {
 
         <div className="stores">
           {STORE_LOCATIONS.map((s) => (
-            <article className="store" key={s.id}>
+            <article className="store" key={s.id} data-reveal>
               
                 <div>
                   <div className="store__town">{s.district}</div>
