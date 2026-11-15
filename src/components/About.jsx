@@ -43,7 +43,7 @@ export const About = () => (
           <div className="sister">
             <span>Our sister store</span>
             <b>Eyescan</b>
-            <p>Our sister concern, also in Alathur and Vadakkencherry.</p>
+            <p>Our sister store in Vadakkencherry, run under a separate name.</p>
           </div>
         </div>
       </div>
