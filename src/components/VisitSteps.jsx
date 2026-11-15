@@ -27,7 +27,7 @@ export const VisitSteps = () => {
         <div className="steps">
           {STEPS.map((s, i) => (
             <div className="step" key={s.title} data-reveal style={{ '--i': i }}>
-              <div className="step__no">{i + 1}.</div>
+              <div className="step__no">{i + 1}</div>
               <div>
                 <h3>{s.title}</h3>
                 <p>{s.text}</p>
