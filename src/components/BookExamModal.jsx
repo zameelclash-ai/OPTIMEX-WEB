@@ -1,189 +1,100 @@
-import React, { useState } from 'react';
-import { X, Calendar, Clock, MapPin, MessageCircle, Phone, Stethoscope } from 'lucide-react';
+import React, { useEffect, useState } from 'react';
 import { useStore } from '../context/CartContext';
 import { STORE_LOCATIONS } from '../data/products';
+import { IconClose, IconWhatsApp, IconPhone } from './Icons';
+
+const TIMES = ['10:00 am', '11:00 am', '12:00 pm', '2:30 pm', '4:00 pm', '5:30 pm', '6:30 pm'];
+
+const today = () => {
+  const d = new Date();
+  const pad = (n) => String(n).padStart(2, '0');
+  return `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`;
+};
 
 export const BookExamModal = () => {
-  const { 
-    isExamModalOpen, 
-    setIsExamModalOpen, 
-    selectedBranchForExam, 
-    setSelectedBranchForExam,
-    showToast 
-  } = useStore();
+  const { isExamModalOpen, setIsExamModalOpen, selectedBranchForExam, showToast } = useStore();
 
-  const [selectedBranch, setSelectedBranch] = useState(selectedBranchForExam || 'vadakkencherry');
-  const [patientName, setPatientName] = useState('');
-  const [patientPhone, setPatientPhone] = useState('');
-  const [preferredDate, setPreferredDate] = useState('2026-09-20');
-  const [preferredTime, setPreferredTime] = useState('11:00 AM');
+  const [branch, setBranch] = useState(selectedBranchForExam || STORE_LOCATIONS[0].id);
+  const [name, setName] = useState('');
+  const [phone, setPhone] = useState('');
+  const [date, setDate] = useState(today());
+  const [time, setTime] = useState(TIMES[1]);
+
+  useEffect(() => {
+    if (isExamModalOpen && selectedBranchForExam) setBranch(selectedBranchForExam);
+  }, [isExamModalOpen, selectedBranchForExam]);
 
   if (!isExamModalOpen) return null;
 
-  const currentStore = STORE_LOCATIONS.find(s => s.id === selectedBranch) || STORE_LOCATIONS[0];
+  const store = STORE_LOCATIONS.find((s) => s.id === branch) || STORE_LOCATIONS[0];
+  const close = () => setIsExamModalOpen(false);
 
-  const handleWhatsAppBooking = (e) => {
+  const submit = (e) => {
     e.preventDefault();
-    if (!patientName.trim() || !patientPhone.trim()) {
-      showToast('Please enter your name and phone number');
+    if (!name.trim() || !phone.trim()) {
+      showToast('Please add your name and phone number');
       return;
     }
-
-    const branchName = currentStore.town;
-    const phone = currentStore.whatsappNumber;
-
-    const message = `Hello Optimex Optical ${branchName},\n\nI would like to book a computerized eye checkup appointment:\n- Patient Name: ${patientName}\n- Contact Number: ${patientPhone}\n- Preferred Date: ${preferredDate}\n- Preferred Time: ${preferredTime}\n\nPlease confirm my slot. Thank you!`;
-
-    window.open(`https://wa.me/${phone}?text=${encodeURIComponent(message)}`, '_blank');
-    setIsExamModalOpen(false);
-  };
-
-  const handleDirectCall = () => {
-    window.location.href = `tel:${currentStore.phone}`;
+    const msg = `Hello Optimex Opticals ${store.town},\n\nI'd like to book an eye test.\nName: ${name}\nPhone: ${phone}\nDate: ${date}\nTime: ${time}\n\nPlease confirm. Thank you!`;
+    window.open(`https://wa.me/${store.whatsappNumber}?text=${encodeURIComponent(msg)}`, '_blank');
+    close();
   };
 
   return (
-    <div className="fixed inset-0 z-50 overflow-y-auto bg-black/85 backdrop-blur-md flex items-center justify-center p-4 sm:p-6 animate-in fade-in duration-200">
-      <div 
-        className="relative bg-optimex-surface text-white rounded-3xl max-w-xl w-full shadow-2xl overflow-hidden border border-white/10"
-        onClick={(e) => e.stopPropagation()}
-      >
-        {/* Header */}
-        <div className="bg-black/60 p-6 flex items-center justify-between border-b border-white/10">
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-optimex-red/20 text-optimex-red flex items-center justify-center">
-              <Stethoscope className="w-5 h-5" />
-            </div>
-            <div>
-              <span className="text-[10px] font-extrabold uppercase tracking-widest text-optimex-red">
-                COMPUTERIZED REFRACTION CLINIC
-              </span>
-              <h2 className="text-xl font-bold text-white">
-                Book Eye Exam via WhatsApp / Call
-              </h2>
-            </div>
-          </div>
-          <button
-            onClick={() => setIsExamModalOpen(false)}
-            className="p-2 rounded-full hover:bg-white/10 text-slate-400 hover:text-white transition-colors"
-          >
-            <X className="w-5 h-5" />
-          </button>
+    <div className="modal" onClick={close} role="dialog" aria-modal="true" aria-label="Book an eye test">
+      <div className="modal__box" onClick={(e) => e.stopPropagation()}>
+        <button className="modal__close" onClick={close} aria-label="Close"><IconClose size={18} /></button>
+        <div className="modal__head">
+          <span className="eyebrow eyebrow--red">Eye test</span>
+          <h3>Book a time that suits you</h3>
+          <p className="muted" style={{ margin: '8px 0 0', fontSize: 15 }}>
+            This opens WhatsApp with your details filled in. We'll reply to confirm.
+          </p>
         </div>
 
-        {/* Form Body */}
-        <form onSubmit={handleWhatsAppBooking} className="p-6 sm:p-8 space-y-5">
-          {/* 1. Branch Selector */}
-          <div>
-            <label className="block text-xs font-bold uppercase tracking-wider text-slate-400 mb-2">
-              Select Showroom Clinic
-            </label>
-            <div className="grid grid-cols-2 gap-3">
-              {STORE_LOCATIONS.map((store) => (
-                <div
-                  key={store.id}
-                  onClick={() => setSelectedBranch(store.id)}
-                  className={`p-3.5 rounded-2xl border cursor-pointer transition-all ${
-                    selectedBranch === store.id 
-                      ? 'border-optimex-blue bg-optimex-blue/20 text-white shadow-glow-blue' 
-                      : 'border-white/10 bg-black/40 text-slate-400 hover:border-white/20'
-                  }`}
+        <form className="modal__body" onSubmit={submit}>
+          <div className="field">
+            <label>Store</label>
+            <div className="seg">
+              {STORE_LOCATIONS.map((s) => (
+                <button
+                  type="button"
+                  key={s.id}
+                  className={branch === s.id ? 'is-active' : ''}
+                  onClick={() => setBranch(s.id)}
                 >
-                  <div className="flex items-center gap-1.5 text-xs font-bold text-white mb-0.5">
-                    <MapPin className="w-3.5 h-3.5 text-optimex-red" />
-                    <span>{store.town}</span>
-                  </div>
-                  <p className="text-[11px] text-slate-400">{store.statusText}</p>
-                  <p className="text-[10px] text-amber-400 font-bold mt-1">{store.rating} ★ ({store.reviewsCount} reviews)</p>
-                </div>
+                  {s.town}
+                </button>
               ))}
             </div>
           </div>
 
-          {/* 2. Patient Name & Phone */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-            <div>
-              <label className="text-[11px] font-semibold text-slate-300 block mb-1">Patient Name</label>
-              <input
-                type="text"
-                required
-                placeholder="e.g. Ramesh Kumar"
-                value={patientName}
-                onChange={(e) => setPatientName(e.target.value)}
-                className="w-full bg-black/40 border border-white/15 rounded-xl p-2.5 text-xs text-white focus:ring-1 focus:ring-optimex-blue focus:outline-none"
-              />
-            </div>
-
-            <div>
-              <label className="text-[11px] font-semibold text-slate-300 block mb-1">Mobile / WhatsApp Number</label>
-              <input
-                type="tel"
-                required
-                placeholder="+91 98765 43210"
-                value={patientPhone}
-                onChange={(e) => setPatientPhone(e.target.value)}
-                className="w-full bg-black/40 border border-white/15 rounded-xl p-2.5 text-xs text-white focus:ring-1 focus:ring-optimex-blue focus:outline-none"
-              />
-            </div>
+          <div className="field">
+            <label htmlFor="bk-name">Your name</label>
+            <input id="bk-name" value={name} onChange={(e) => setName(e.target.value)} autoComplete="name" />
           </div>
-
-          {/* 3. Preferred Date & Time */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-            <div>
-              <label className="text-[11px] font-semibold text-slate-300 block mb-1">Preferred Date</label>
-              <input
-                type="date"
-                value={preferredDate}
-                min="2026-09-17"
-                max="2026-10-31"
-                onChange={(e) => setPreferredDate(e.target.value)}
-                className="w-full bg-black/40 border border-white/15 rounded-xl p-2.5 text-xs text-white focus:ring-1 focus:ring-optimex-blue focus:outline-none cursor-pointer"
-              />
+          <div className="field">
+            <label htmlFor="bk-phone">Phone / WhatsApp</label>
+            <input id="bk-phone" type="tel" value={phone} onChange={(e) => setPhone(e.target.value)} autoComplete="tel" />
+          </div>
+          <div className="field-row">
+            <div className="field">
+              <label htmlFor="bk-date">Date</label>
+              <input id="bk-date" type="date" min={today()} value={date} onChange={(e) => setDate(e.target.value)} />
             </div>
-
-            <div>
-              <label className="text-[11px] font-semibold text-slate-300 block mb-1">Preferred Time</label>
-              <select
-                value={preferredTime}
-                onChange={(e) => setPreferredTime(e.target.value)}
-                className="w-full bg-black/40 border border-white/15 rounded-xl p-2.5 text-xs text-white focus:ring-1 focus:ring-optimex-blue focus:outline-none cursor-pointer"
-              >
-                <option value="10:00 AM" className="bg-neutral-900">10:00 AM</option>
-                <option value="11:00 AM" className="bg-neutral-900">11:00 AM</option>
-                <option value="12:00 PM" className="bg-neutral-900">12:00 PM</option>
-                <option value="02:30 PM" className="bg-neutral-900">02:30 PM</option>
-                <option value="04:00 PM" className="bg-neutral-900">04:00 PM</option>
-                <option value="05:30 PM" className="bg-neutral-900">05:30 PM</option>
-                <option value="06:30 PM" className="bg-neutral-900">06:30 PM</option>
+            <div className="field">
+              <label htmlFor="bk-time">Time</label>
+              <select id="bk-time" value={time} onChange={(e) => setTime(e.target.value)}>
+                {TIMES.map((t) => <option key={t}>{t}</option>)}
               </select>
             </div>
           </div>
 
-          <div className="p-3 bg-white/5 rounded-xl border border-white/5 text-[11px] text-slate-400">
-            Appointment will be sent directly to <strong className="text-white">{currentStore.name}</strong> on WhatsApp for quick confirmation. No online advance payment required.
-          </div>
-
-          {/* Action Buttons: WhatsApp & Phone */}
-          <div className="pt-2 flex flex-col sm:flex-row gap-3">
-            <button
-              type="submit"
-              className="flex-1 py-3.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs uppercase tracking-wider transition-colors flex items-center justify-center gap-2 shadow-lg"
-            >
-              <MessageCircle className="w-4 h-4" />
-              <span>Confirm on WhatsApp</span>
-            </button>
-
-            <button
-              type="button"
-              onClick={handleDirectCall}
-              className="py-3.5 px-5 rounded-xl bg-white/10 hover:bg-white/15 text-white font-bold text-xs uppercase tracking-wider transition-colors flex items-center justify-center gap-2"
-            >
-              <Phone className="w-4 h-4" />
-              <span>Call Shop</span>
-            </button>
-          </div>
+          <button type="submit" className="btn btn--wa"><IconWhatsApp size={18} /> Send booking on WhatsApp</button>
+          <a className="btn btn--line" href={`tel:${store.phone.replace(/\s/g, '')}`}>
+            <IconPhone size={16} /> Or call {store.phone}
+          </a>
         </form>
-
       </div>
     </div>
   );
